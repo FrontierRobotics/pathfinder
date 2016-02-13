@@ -1,16 +1,8 @@
-# Roadmap
+# Capability Planning
 
 Names: WALL-E, CondonExplorationAdminsration: Pathfinder, Popcorn, Voyager, Snowman, Hubble, CondonExplorationVehichle, TCs, T3R, R2C2
 
-Milestone | Important Considerations
----- | ------------------------
-Navigation | Basic chassis, motor control, and obstacle avoidance
-Home Waypoints | Position and direction, refined motor control and obstacle avoidance
-Park Waypoints | All terrain chassis, advanced motor control and obstacle avoidance
-Get to Park | Computer vision and high visibility for traffic avoidance, 
-Home Samples | Sampling hardware
-Park Samples | Sampling on longer missions
-Natural Area Samples | Harsh terrain
+Goal: Get to Mylar Park
 
 ## Navigation
 
