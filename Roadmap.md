@@ -2,7 +2,7 @@
 
 Names: WALL-E, CondonExplorationAdminsration: Pathfinder, Popcorn, Voyager, Snowman, Hubble, CondonExplorationVehichle, TCs, T3R, R2C2
 
-Goal | Important Considerations
+Milestone | Important Considerations
 ---- | ------------------------
 Contrived Navigation | Basic chassis, motor control, and obstacle avoidance
 Home Waypoints | Position and direction, refined motor control and obstacle avoidance
@@ -22,7 +22,7 @@ Home Samples | Sampling hardware
 * Following a known path using waypoints *(D: 5, P: )*
 * Motor control *(D: 3, P: )*
 
-## Fail safe plan (Recovery)
+## Fail Safe Plan (Recovery)
 
 * Return to known spot *(D: 8, P: )*
 * Transmit location *(D: 3, P: )*
@@ -60,7 +60,7 @@ Home Samples | Sampling hardware
   * Spikes *(D: , P: )*
   * Transmit SOS *(D: , P: )*
 
-## Travel long distances
+## Travel Long Distances
 
 * Energy
   * Solar power *(D: , P: )*
@@ -100,5 +100,5 @@ Home Samples | Sampling hardware
 
 ## Sample Analysis
 
-* spectrometer *(D: , P: )*
+* Spectrometer *(D: , P: )*
 
