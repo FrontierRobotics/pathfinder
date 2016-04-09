@@ -26,7 +26,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -45,11 +45,11 @@
      inkscape:window-height="756"
      id="namedview164"
      showgrid="true"
-     inkscape:zoom="3.0669265"
-     inkscape:cx="83.202075"
-     inkscape:cy="78.702409"
+     inkscape:zoom="6.133853"
+     inkscape:cx="28.913196"
+     inkscape:cy="45.451836"
      inkscape:window-x="6"
-     inkscape:window-y="0"
+     inkscape:window-y="46"
      inkscape:window-maximized="0"
      inkscape:current-layer="schematic"
      inkscape:snap-text-baseline="false"
@@ -137,15 +137,15 @@
          width="0.000283464"
          x="0.349999"
          class="terminal"
-         y="115.56"
+         y="29.124159"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="-0.25541908"
+         x="-0.25542209"
          class="text"
          font-size="2.5"
-         y="25.768576"
+         y="25.159187"
          id="text20"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000024px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
          sodipodi:linespacing="125%">1</text>
       <text
          x="9.5462523"
@@ -168,9 +168,9 @@
          height="0.000283465"
          id="connector1terminal"
          width="0.000283464"
-         x="0.349999"
+         x="-6.7559509"
          class="terminal"
-         y="29.16"
+         y="14.791193"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="-0.1998771"
@@ -201,9 +201,9 @@
          height="0.000283465"
          id="connector2terminal"
          width="0.000283464"
-         x="0.349999"
+         x="78.287842"
          class="terminal"
-         y="36.36"
+         y="64.841156"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="71.771446"
@@ -234,9 +234,9 @@
          height="0.000283465"
          id="connector3terminal"
          width="0.000283464"
-         x="0.349999"
+         x="78.287842"
          class="terminal"
-         y="57.96"
+         y="50.791191"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="71.775719"
@@ -267,9 +267,9 @@
          height="0.000283465"
          id="connector4terminal"
          width="0.000283464"
-         x="72.35"
+         x="78.287842"
          class="terminal"
-         y="7.56"
+         y="42.891125"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="71.779381"
@@ -300,9 +300,9 @@
          height="0.000283465"
          id="connector5terminal"
          width="0.000283464"
-         x="72.35"
+         x="78.287842"
          class="terminal"
-         y="14.76"
+         y="0.39119419"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="71.758018"
@@ -333,9 +333,9 @@
          height="0.000283465"
          id="connector6terminal"
          width="0.000283464"
-         x="72.35"
+         x="78.287842"
          class="terminal"
-         y="21.96"
+         y="14.091125"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="71.770836"
@@ -366,9 +366,9 @@
          height="0.000283465"
          id="connector7terminal"
          width="0.000283464"
-         x="72.35"
+         x="78.287842"
          class="terminal"
-         y="29.16"
+         y="86.791183"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="71.767174"
@@ -399,17 +399,17 @@
          height="0.000283465"
          id="connector8terminal"
          width="0.000283464"
-         x="72.35"
+         x="78.287842"
          class="terminal"
-         y="36.36"
+         y="100.84115"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="71.775719"
+         x="71.775711"
          class="text"
          font-size="2.5"
-         y="98.829575"
+         y="98.884796"
          id="text68"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000024px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
          sodipodi:linespacing="125%">9</text>
       <text
          x="62.946171"
@@ -432,9 +432,9 @@
          height="0.000283465"
          id="connector9terminal"
          width="0.000283464"
-         x="72.35"
+         x="-6.7559514"
          class="terminal"
-         y="43.56"
+         y="101.19118"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="-0.28776774"
@@ -465,9 +465,9 @@
          height="0.000283465"
          id="connector10terminal"
          width="0.000283464"
-         x="72.35"
+         x="-6.7559514"
          class="terminal"
-         y="50.76"
+         y="36.391193"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="-0.25541911"
@@ -498,9 +498,9 @@
          height="0.000283465"
          id="connector11terminal"
          width="0.000283464"
-         x="72.35"
+         x="-6.7559514"
          class="terminal"
-         y="57.96"
+         y="43.241158"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="-0.24565347"
@@ -522,9 +522,9 @@
          height="0.000283465"
          id="connector23terminal"
          width="0.000283464"
-         x="0.349999"
+         x="-6.9413977"
          class="terminal"
-         y="7.56"
+         y="0.041161083"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="-0.25480875"
@@ -555,9 +555,9 @@
          height="0.000283465"
          id="connector22terminal"
          width="0.000283464"
-         x="0.349999"
+         x="-6.7559509"
          class="terminal"
-         y="72.36"
+         y="7.5911937"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="-0.22490151"
@@ -588,9 +588,9 @@
          height="0.000283465"
          id="connector21terminal"
          width="0.000283464"
-         x="0.349999"
+         x="35.940041"
          class="terminal"
-         y="21.96"
+         y="115.92297"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="32.435543"
@@ -620,9 +620,9 @@
          height="0.000283465"
          id="connector20terminal"
          width="0.000283464"
-         x="0.349999"
+         x="-6.7559509"
          class="terminal"
-         y="50.76"
+         y="65.191193"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="-0.20964274"
@@ -653,9 +653,9 @@
          height="0.000283465"
          id="connector19terminal"
          width="0.000283464"
-         x="72.35"
+         x="78.287842"
          class="terminal"
-         y="115.56"
+         y="72.041153"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="71.758018"
@@ -686,9 +686,9 @@
          height="0.000283465"
          id="connector18terminal"
          width="0.000283464"
-         x="72.35"
+         x="78.287849"
          class="terminal"
-         y="108.36"
+         y="21.641157"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="71.717125"
@@ -719,9 +719,9 @@
          height="0.000283465"
          id="connector17terminal"
          width="0.000283464"
-         x="72.35"
+         x="78.287842"
          class="terminal"
-         y="101.16"
+         y="107.69112"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="71.714684"
@@ -752,9 +752,9 @@
          height="0.000283465"
          id="connector16terminal"
          width="0.000283464"
-         x="72.35"
+         x="-6.7559514"
          class="terminal"
-         y="93.96"
+         y="108.04115"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="-0.26396403"
@@ -785,9 +785,9 @@
          height="0.000283465"
          id="connector15terminal"
          width="0.000283464"
-         x="72.35"
+         x="-6.7559514"
          class="terminal"
-         y="86.76"
+         y="50.678204"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="-0.2920402"
@@ -818,9 +818,9 @@
          height="0.000283465"
          id="connector14terminal"
          width="0.000283464"
-         x="72.35"
+         x="-6.7559514"
          class="terminal"
-         y="79.56"
+         y="86.791183"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="-0.26152262"
@@ -851,9 +851,9 @@
          height="0.000283465"
          id="connector12terminal"
          width="0.000283464"
-         x="72.35"
+         x="-6.7559514"
          class="terminal"
-         y="65.16"
+         y="93.991188"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="-0.27067786"
@@ -875,18 +875,18 @@
          id="connector13pin"
          connectorname="OUT9"
          class="pin"
-         y1="79.591187"
-         y2="79.591187"
-         x1="6.997807"
-         x2="-6.7559514"
+         y1="79.018997"
+         y2="79.018997"
+         x1="-7.2284694"
+         x2="6.7555447"
          style="stroke:#787878;stroke-width:0.96747857;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector13terminal"
          width="0.000283464"
-         x="72.35"
+         x="-7.2284694"
          class="terminal"
-         y="72.36"
+         y="79.591187"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
          x="-0.30058509"
@@ -908,10 +908,10 @@
          id="connector24pin"
          connectorname="GND"
          class="pin"
-         y1="29.124155"
-         y2="29.124155"
-         x1="-7.4340572"
-         x2="3.4912829"
+         y1="126.36996"
+         y2="115.44463"
+         x1="35.940041"
+         x2="35.940041"
          style="stroke:#787878;stroke-width:0;stroke-linecap:round" />
       <g
          height="0.000283465"
