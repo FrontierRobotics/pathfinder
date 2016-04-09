@@ -12,9 +12,9 @@
    version="1.2"
    x="0in"
    y="0in"
-   width="1.00972in"
-   height="1.71in"
-   viewBox="0 0 72.6998 123.12"
+   width="1.2in"
+   height="1.9in"
+   viewBox="0 0 86.399961 136.8"
    id="svg2"
    inkscape:version="0.91 r13725"
    sodipodi:docname="LT3514_schematic.svg">
@@ -45,85 +45,92 @@
      inkscape:window-height="756"
      id="namedview164"
      showgrid="true"
-     inkscape:zoom="3.0669265"
-     inkscape:cx="89.182205"
-     inkscape:cy="88.907878"
+     inkscape:zoom="2.1686445"
+     inkscape:cx="63.773573"
+     inkscape:cy="52.617663"
      inkscape:window-x="0"
-     inkscape:window-y="46"
+     inkscape:window-y="69"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg2"
+     inkscape:current-layer="schematic"
      inkscape:snap-text-baseline="false"
      inkscape:snap-page="true"
-     borderlayer="true">
+     borderlayer="true"
+     inkscape:snap-nodes="false"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="false"
+     inkscape:bbox-nodes="false"
+     inkscape:snap-bbox-edge-midpoints="true">
     <inkscape:grid
        type="xygrid"
        id="grid3438"
        units="in"
-       spacingx="0.71999965"
-       spacingy="0.71999996" />
+       spacingx="7.1999963"
+       spacingy="7.1999994"
+       empspacing="1" />
   </sodipodi:namedview>
   <g
      partID="854774200"
      id="g4"
-     transform="translate(0.13030793,0)">
+     transform="translate(7.4340361,7.158838)">
     <g
        id="schematic">
       <rect
          height="122.4"
          width="57.599998"
-         x="7.5499902"
+         x="7.4462624"
          class="interior rect"
-         y="0.36000001"
+         y="-6.579174"
          id="rect7"
          style="fill:#ffffff;stroke:none;stroke-width:0" />
       <text
          id="label"
-         x="36.350101"
+         x="36.246372"
          class="text"
          font-size="4.25001"
-         y="59.293098"
-         style="font-size:4.25001001px;font-family:'Droid Sans';text-anchor:middle;fill:#000000;stroke:none;stroke-width:0">LT3514</text>
+         y="52.353928"
+         style="font-size:3.50000017px;font-family:'Droid Sans';text-anchor:middle;fill:#000000;stroke:none;stroke-width:0;-inkscape-font-specification:'Droid Sans, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-align:center;writing-mode:lr;line-height:125%;"
+         sodipodi:linespacing="125%">LT3514</text>
       <line
          class="other"
-         y1="122.76"
-         y2="0.36000001"
-         x1="65.150002"
-         x2="65.150002"
+         y1="115.69758"
+         y2="-6.7024298"
+         x1="64.115898"
+         x2="64.115898"
          id="line10"
          style="stroke:#000000;stroke-width:0.89999998;stroke-linecap:round" />
       <line
          class="other"
-         y1="0.36000001"
-         y2="0.36000001"
-         x1="65.150002"
-         x2="7.5499902"
+         y1="-6.579174"
+         y2="-6.579174"
+         x1="64.115067"
+         x2="7.4390979"
          id="line12"
-         style="stroke:#000000;stroke-width:0.89999998;stroke-linecap:round" />
+         style="stroke:#000000;stroke-width:0.89275169;stroke-linecap:round" />
       <line
          class="other"
-         y1="0.36000001"
-         y2="122.76"
-         x1="7.5499902"
-         x2="7.5499902"
+         y1="-6.579174"
+         y2="115.82083"
+         x1="7.4462624"
+         x2="7.4462624"
          id="line14"
          style="stroke:#000000;stroke-width:0.89999998;stroke-linecap:round" />
       <line
          class="other"
-         y1="122.76"
-         y2="122.76"
-         x1="7.5499902"
-         x2="65.150002"
+         y1="115.82083"
+         y2="115.82083"
+         x1="7.4390101"
+         x2="64.10968"
          id="line16"
-         style="stroke:#000000;stroke-width:0.89999998;stroke-linecap:round" />
+         style="stroke:#000000;stroke-width:0.89270997;stroke-linecap:round" />
       <line
          id="connector0pin"
          connectorname="GND"
          class="pin"
-         y1="36.063332"
-         y2="36.063332"
-         x1="0.34999901"
-         x2="7.5499902"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="29.124159"
+         y2="29.124159"
+         x1="-7.5481415"
+         x2="7.0800281"
+         style="stroke:#787878;stroke-width:0.9977594;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector0terminal"
@@ -133,30 +140,30 @@
          y="115.56"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="3.94999"
+         x="-0.25541908"
          class="text"
          font-size="2.5"
-         y="35.013336"
+         y="25.768576"
          id="text20"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">1</text>
       <text
-         x="9.6499796"
+         x="9.5462523"
          class="text"
          font-size="3.49999"
-         y="37.132229"
+         y="30.193056"
          id="text22"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:start;writing-mode:lr;text-anchor:start;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">VIN</text>
       <line
          id="connector1pin"
          connectorname="SDI"
          class="pin"
-         y1="21.782122"
-         y2="21.782122"
-         x1="0.34999901"
-         x2="7.5499902"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="14.791193"
+         y2="14.791193"
+         x1="-6.7559509"
+         x2="6.9978013"
+         style="stroke:#787878;stroke-width:0.96747875;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector1terminal"
@@ -166,30 +173,30 @@
          y="29.16"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="3.94999"
+         x="-0.1998771"
          class="text"
          font-size="2.5"
-         y="20.732122"
+         y="11.948478"
          id="text26"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">2</text>
       <text
-         x="9.6499796"
+         x="9.5462523"
          class="text"
          font-size="3.49999"
-         y="22.482021"
+         y="15.542847"
          id="text28"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:start;writing-mode:lr;text-anchor:start;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">NC</text>
       <line
          id="connector2pin"
          connectorname="CLK"
          class="pin"
-         y1="72.142723"
-         y2="72.142723"
-         x1="65.275345"
-         x2="72.475342"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="64.841156"
+         y2="64.841156"
+         x1="64.534073"
+         x2="78.287842"
+         style="stroke:#787878;stroke-width:0.96747845;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector2terminal"
@@ -199,30 +206,30 @@
          y="36.36"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="68.875336"
+         x="71.771446"
          class="text"
          font-size="2.5"
-         y="71.09272"
+         y="63.046867"
          id="text32"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">3</text>
       <text
-         x="63.324066"
+         x="63.220337"
          class="text"
          font-size="3.49999"
-         y="73.580406"
+         y="66.641235"
          id="text34"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:end;writing-mode:lr-tb;text-anchor:end;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:end;writing-mode:lr;text-anchor:end;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">DA3</text>
       <line
          id="connector3pin"
          connectorname="LE"
          class="pin"
-         y1="57.22221"
-         y2="57.22221"
-         x1="65.090897"
-         x2="72.290886"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="50.791191"
+         y2="50.791191"
+         x1="64.534081"
+         x2="78.287842"
+         style="stroke:#787878;stroke-width:0.96747869;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector3terminal"
@@ -232,30 +239,30 @@
          y="57.96"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="68.690887"
+         x="71.775719"
          class="text"
          font-size="2.5"
-         y="56.172211"
+         y="48.587475"
          id="text38"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">4</text>
       <text
-         x="63.13961"
+         x="63.035881"
          class="text"
          font-size="3.49999"
-         y="58.659901"
+         y="51.72073"
          id="text40"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:end;writing-mode:lr-tb;text-anchor:end;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:end;writing-mode:lr;text-anchor:end;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">SW3</text>
       <line
          id="connector4pin"
          connectorname="OUT0"
          class="pin"
-         y1="50.351707"
-         y2="50.351707"
-         x1="72.349998"
-         x2="65.150002"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="42.891125"
+         y2="42.891125"
+         x1="78.287842"
+         x2="64.534073"
+         style="stroke:#787878;stroke-width:0.96747845;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector4terminal"
@@ -265,30 +272,30 @@
          y="7.56"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="68.75"
+         x="71.779381"
          class="text"
          font-size="2.5"
-         y="49.301697"
+         y="41.16362"
          id="text44"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">5</text>
       <text
-         x="63.234348"
+         x="63.130619"
          class="text"
          font-size="3.49999"
-         y="51.605038"
+         y="44.665867"
          id="text46"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:end;writing-mode:lr-tb;text-anchor:end;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:end;writing-mode:lr;text-anchor:end;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">SW3</text>
       <line
          id="connector5pin"
          connectorname="OUT1"
          class="pin"
-         y1="7.013226"
-         y2="7.013226"
-         x1="72.349998"
-         x2="65.150002"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="0.39119419"
+         y2="0.39119419"
+         x1="78.287842"
+         x2="64.534073"
+         style="stroke:#787878;stroke-width:0.96747845;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector5terminal"
@@ -298,30 +305,30 @@
          y="14.76"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="68.75"
+         x="71.758018"
          class="text"
          font-size="2.5"
-         y="5.9632258"
+         y="-1.9904065"
          id="text50"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">6</text>
       <text
-         x="63.0499"
+         x="62.946171"
          class="text"
          font-size="3.49999"
-         y="8.4510136"
+         y="1.5118393"
          id="text52"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:end;writing-mode:lr-tb;text-anchor:end;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:end;writing-mode:lr;text-anchor:end;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">SW1</text>
       <line
          id="connector6pin"
          connectorname="OUT2"
          class="pin"
-         y1="21.591105"
-         y2="21.591105"
-         x1="72.349998"
-         x2="65.150002"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="14.091125"
+         y2="14.091125"
+         x1="78.287842"
+         x2="64.534073"
+         style="stroke:#787878;stroke-width:0.96747845;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector6terminal"
@@ -331,30 +338,30 @@
          y="21.96"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="68.75"
+         x="71.770836"
          class="text"
          font-size="2.5"
-         y="20.541105"
+         y="12.126354"
          id="text56"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">7</text>
       <text
-         x="63.0499"
+         x="62.946171"
          class="text"
          font-size="3.49999"
-         y="22.475552"
+         y="15.536377"
          id="text58"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:end;writing-mode:lr-tb;text-anchor:end;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:end;writing-mode:lr;text-anchor:end;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">DA1</text>
       <line
          id="connector7pin"
          connectorname="OUT3"
          class="pin"
-         y1="93.532005"
-         y2="93.532005"
-         x1="72.349998"
-         x2="65.150002"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="86.791183"
+         y2="86.791183"
+         x1="78.287842"
+         x2="64.534073"
+         style="stroke:#787878;stroke-width:0.96747845;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector7terminal"
@@ -364,30 +371,30 @@
          y="29.16"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="68.75"
+         x="71.767174"
          class="text"
          font-size="2.5"
-         y="92.48201"
+         y="84.528381"
          id="text62"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">8</text>
       <text
-         x="63.0499"
+         x="62.946171"
          class="text"
          font-size="3.49999"
-         y="94.969688"
+         y="88.030518"
          id="text64"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:end;writing-mode:lr-tb;text-anchor:end;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:end;writing-mode:lr;text-anchor:end;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">SW4</text>
       <line
          id="connector8pin"
          connectorname="OUT4"
          class="pin"
-         y1="107.92545"
-         y2="107.92545"
-         x1="72.349998"
-         x2="65.150002"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="100.84115"
+         y2="100.84115"
+         x1="78.287842"
+         x2="64.534073"
+         style="stroke:#787878;stroke-width:0.96747845;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector8terminal"
@@ -397,30 +404,30 @@
          y="36.36"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="68.75"
+         x="71.775719"
          class="text"
          font-size="2.5"
-         y="106.87543"
+         y="98.829575"
          id="text68"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">9</text>
       <text
-         x="63.0499"
+         x="62.946171"
          class="text"
          font-size="3.49999"
-         y="108.80979"
+         y="101.87062"
          id="text70"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:end;writing-mode:lr-tb;text-anchor:end;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:end;writing-mode:lr;text-anchor:end;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">DA4</text>
       <line
          id="connector9pin"
          connectorname="OUT5"
          class="pin"
-         y1="107.74757"
-         y2="107.74757"
-         x1="7.6091046"
-         x2="0.40910769"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="101.19118"
+         y2="101.19118"
+         x1="6.997807"
+         x2="-6.7559514"
+         style="stroke:#787878;stroke-width:0.96747857;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector9terminal"
@@ -430,30 +437,30 @@
          y="43.56"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="4.0091062"
+         x="-0.28776774"
          class="text"
          font-size="2.5"
-         y="106.69756"
+         y="99.020607"
          id="text74"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">10</text>
       <text
-         x="9.0069313"
+         x="10.503203"
          class="text"
          font-size="3.49999"
-         y="109.0008"
+         y="102.06163"
          id="text76"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000024px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
          sodipodi:linespacing="125%">NC</text>
       <line
          id="connector10pin"
          connectorname="OUT6"
          class="pin"
-         y1="43.197666"
-         y2="43.197666"
-         x1="7.6091046"
-         x2="0.4091076"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="36.391193"
+         y2="36.391193"
+         x1="6.997807"
+         x2="-6.7559514"
+         style="stroke:#787878;stroke-width:0.96747857;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector10terminal"
@@ -463,30 +470,30 @@
          y="50.76"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="4.0091062"
+         x="-0.25541911"
          class="text"
          font-size="2.5"
-         y="42.147667"
+         y="34.194038"
          id="text80"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">11</text>
       <text
-         x="9.7287846"
+         x="9.6250572"
          class="text"
          font-size="3.49999"
-         y="44.082016"
+         y="37.142845"
          id="text82"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:start;writing-mode:lr;text-anchor:start;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">VIN</text>
       <line
          id="connector11pin"
          connectorname="OUT7"
          class="pin"
-         y1="50.397675"
-         y2="50.397675"
-         x1="7.6091046"
-         x2="0.4091076"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="43.241158"
+         y2="43.241158"
+         x1="6.9978075"
+         x2="-6.7559514"
+         style="stroke:#787878;stroke-width:0.96747857;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector11terminal"
@@ -496,20 +503,20 @@
          y="57.96"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="4.0091062"
+         x="-0.24565347"
          class="text"
          font-size="2.5"
-         y="49.347672"
+         y="41.301819"
          id="text86"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">12</text>
       <text
-         x="9.9291658"
+         x="9.8254385"
          class="text"
          font-size="3.49999"
-         y="51.466469"
+         y="44.527298"
          id="text88"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:start;writing-mode:lr;text-anchor:start;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">VIN</text>
       <g
          height="0.000283465"
@@ -520,30 +527,30 @@
          y="7.56"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="4.1344371"
+         x="-0.25480875"
          class="text"
          font-size="2.5"
-         y="5.5877562"
+         y="-2.6883893"
          id="text92"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">24</text>
       <text
-         x="9.8344269"
+         x="9.7306995"
          class="text"
          font-size="3.49999"
-         y="8.2599869"
+         y="1.3208126"
          id="text94"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:start;writing-mode:lr;text-anchor:start;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">SKY</text>
       <line
          id="connector22pin"
          connectorname="REXT"
          class="pin"
-         y1="14.259192"
-         y2="14.259192"
-         x1="0.34999901"
-         x2="7.5499902"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="7.5911937"
+         y2="7.5911937"
+         x1="-6.7559509"
+         x2="6.9978013"
+         style="stroke:#787878;stroke-width:0.96747875;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector22terminal"
@@ -553,30 +560,30 @@
          y="72.36"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="3.94999"
+         x="-0.22490151"
          class="text"
          font-size="2.5"
-         y="13.209189"
+         y="4.4897475"
          id="text98"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">23</text>
       <text
-         x="9.6499796"
+         x="9.5462523"
          class="text"
          font-size="3.49999"
-         y="14.95909"
+         y="8.0199156"
          id="text100"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:start;writing-mode:lr;text-anchor:start;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">SW5</text>
       <line
          id="connector21pin"
          connectorname="SDO"
          class="pin"
-         y1="129.77254"
-         y2="122.57255"
-         x1="36.04377"
-         x2="36.04377"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="128.99658"
+         y2="115.92297"
+         x1="35.940041"
+         x2="35.940041"
+         style="stroke:#787878;stroke-width:0.94325429;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector21terminal"
@@ -586,29 +593,29 @@
          y="21.96"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="32.539272"
+         x="32.435543"
          class="text"
          font-size="2.5"
-         y="127.70482"
+         y="123.3689"
          id="text104"
          style="font-size:2.5px;font-family:'Droid Sans';text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0">22</text>
       <text
-         x="31.783619"
+         x="31.679892"
          class="text"
          font-size="3.49999"
-         y="119.86358"
+         y="112.92441"
          id="text106"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">GND</text>
       <line
          id="connector20pin"
          connectorname="~OE"
          class="pin"
-         y1="71.786957"
-         y2="71.786957"
-         x1="0.34999901"
-         x2="7.5499902"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="65.191193"
+         y2="65.191193"
+         x1="-6.7559509"
+         x2="6.9978013"
+         style="stroke:#787878;stroke-width:0.96747875;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector20terminal"
@@ -618,30 +625,30 @@
          y="50.76"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="3.94999"
+         x="-0.20964274"
          class="text"
          font-size="2.5"
-         y="70.736954"
+         y="62.691101"
          id="text110"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">21</text>
       <text
-         x="9.8344269"
+         x="9.7306995"
          class="text"
          font-size="3.49999"
-         y="72.855751"
+         y="65.91658"
          id="text112"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:start;writing-mode:lr;text-anchor:start;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">PG</text>
       <line
          id="connector19pin"
          connectorname="OUT15"
          class="pin"
-         y1="79.039482"
-         y2="79.039482"
-         x1="72.349998"
-         x2="65.150002"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="72.041153"
+         y2="72.041153"
+         x1="78.287842"
+         x2="64.534073"
+         style="stroke:#787878;stroke-width:0.96747845;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector19terminal"
@@ -651,30 +658,30 @@
          y="115.56"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="68.75"
+         x="71.758018"
          class="text"
          font-size="2.5"
-         y="77.989494"
+         y="70.035866"
          id="text116"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">20</text>
       <text
-         x="63.049896"
+         x="62.946167"
          class="text"
          font-size="3.49999"
-         y="80.47728"
+         y="73.538109"
          id="text118"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:end;writing-mode:lr-tb;text-anchor:end;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:end;writing-mode:lr;text-anchor:end;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">FB3</text>
       <line
          id="connector18pin"
          connectorname="OUT14"
          class="pin"
-         y1="28.678886"
-         y2="28.678886"
-         x1="72.349998"
-         x2="65.150002"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="21.641157"
+         y2="21.641157"
+         x1="78.287849"
+         x2="64.534073"
+         style="stroke:#787878;stroke-width:0.96747857;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector18terminal"
@@ -684,30 +691,30 @@
          y="108.36"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="68.75"
+         x="71.717125"
          class="text"
          font-size="2.5"
-         y="27.628883"
+         y="19.675251"
          id="text122"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">19</text>
       <text
-         x="63.0499"
+         x="62.946171"
          class="text"
          font-size="3.49999"
-         y="29.932224"
+         y="22.99305"
          id="text124"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:end;writing-mode:lr-tb;text-anchor:end;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:end;writing-mode:lr;text-anchor:end;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">FB1</text>
       <line
          id="connector17pin"
          connectorname="OUT13"
          class="pin"
-         y1="115.17798"
-         y2="115.17798"
-         x1="72.349998"
-         x2="65.150002"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="107.69112"
+         y2="107.69112"
+         x1="78.287842"
+         x2="64.534073"
+         style="stroke:#787878;stroke-width:0.96747845;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector17terminal"
@@ -717,30 +724,30 @@
          y="101.16"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="68.75"
+         x="71.714684"
          class="text"
          font-size="2.5"
-         y="114.12798"
+         y="106.08213"
          id="text128"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">18</text>
       <text
-         x="63.0499"
+         x="62.946171"
          class="text"
          font-size="3.49999"
-         y="116.43133"
+         y="109.49216"
          id="text130"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:end;writing-mode:lr-tb;text-anchor:end;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000017px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:end;writing-mode:lr;text-anchor:end;fill:#787878;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">FB4</text>
       <line
          id="connector16pin"
          connectorname="OUT12"
          class="pin"
-         y1="115.1714"
-         y2="115.1714"
-         x1="7.6091046"
-         x2="0.40910769"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="108.04115"
+         y2="108.04115"
+         x1="6.997807"
+         x2="-6.7559514"
+         style="stroke:#787878;stroke-width:0.96747857;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector16terminal"
@@ -750,30 +757,30 @@
          y="93.96"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="4.0091062"
+         x="-0.26396403"
          class="text"
          font-size="2.5"
-         y="114.12141"
+         y="106.35223"
          id="text134"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">17</text>
       <text
-         x="9.1913776"
+         x="10.000618"
          class="text"
          font-size="3.49999"
-         y="116.2402"
+         y="109.17764"
          id="text136"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000024px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
          sodipodi:linespacing="125%">RT/SYNC</text>
       <line
          id="connector15pin"
          connectorname="OUT11"
          class="pin"
-         y1="57.617374"
-         y2="57.617374"
-         x1="7.4246578"
-         x2="0.22466068"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="50.678204"
+         y2="50.678204"
+         x1="6.9978075"
+         x2="-6.7559514"
+         style="stroke:#787878;stroke-width:0.96747857;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector15terminal"
@@ -783,30 +790,30 @@
          y="86.76"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="3.8246591"
+         x="-0.2920402"
          class="text"
          font-size="2.5"
-         y="56.567371"
+         y="48.244846"
          id="text140"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">16</text>
       <text
-         x="9.7447186"
+         x="9.9712706"
          class="text"
          font-size="3.49999"
-         y="58.870613"
+         y="51.577637"
          id="text142"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000024px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
          sodipodi:linespacing="125%">EN/UVLO</text>
       <line
          id="connector14pin"
          connectorname="OUT10"
          class="pin"
-         y1="93.457924"
-         y2="93.457924"
-         x1="7.6091046"
-         x2="0.40910769"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="86.791183"
+         y2="86.791183"
+         x1="6.997807"
+         x2="-6.7559514"
+         style="stroke:#787878;stroke-width:0.96747857;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector14terminal"
@@ -816,30 +823,30 @@
          y="79.56"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="4.0091062"
+         x="-0.26152262"
          class="text"
          font-size="2.5"
-         y="92.407928"
+         y="85.284309"
          id="text146"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">15</text>
       <text
-         x="9.1913786"
+         x="10.391888"
          class="text"
          font-size="3.49999"
-         y="94.526726"
+         y="87.577637"
          id="text148"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000024px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
          sodipodi:linespacing="125%">RUN/SS3</text>
       <line
          id="connector12pin"
          connectorname="OUT8"
          class="pin"
-         y1="100.63823"
-         y2="100.63823"
-         x1="7.6091046"
-         x2="0.40910769"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="93.991188"
+         y2="93.991188"
+         x1="6.997807"
+         x2="-6.7559514"
+         style="stroke:#787878;stroke-width:0.96747857;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector12terminal"
@@ -849,29 +856,30 @@
          y="65.16"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="4.0091062"
+         x="-0.27067786"
          class="text"
          font-size="2.5"
-         y="99.588226"
+         y="92.003494"
          id="text152"
-         style="font-size:2.5px;font-family:'Droid Sans';text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0">13</text>
+         style="font-size:2.50000012px;font-family:'Droid Sans';text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;-inkscape-font-specification:'Droid Sans, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-align:center;writing-mode:lr;line-height:125%;"
+         sodipodi:linespacing="125%">13</text>
       <text
-         x="9.3758259"
+         x="10.185064"
          class="text"
          font-size="3.49999"
-         y="101.70702"
+         y="94.777634"
          id="text154"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000024px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
          sodipodi:linespacing="125%">RUN/SS4</text>
       <line
          id="connector13pin"
          connectorname="OUT9"
          class="pin"
-         y1="86.257935"
-         y2="86.257935"
-         x1="7.6091046"
-         x2="0.40910769"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="79.591187"
+         y2="79.591187"
+         x1="6.997807"
+         x2="-6.7559514"
+         style="stroke:#787878;stroke-width:0.96747857;stroke-linecap:round" />
       <g
          height="0.000283465"
          id="connector13terminal"
@@ -881,29 +889,29 @@
          y="72.36"
          style="fill:none;stroke:none;stroke-width:0" />
       <text
-         x="4.0091062"
+         x="-0.30058509"
          class="text"
          font-size="2.5"
-         y="85.207932"
+         y="77.162079"
          id="text158"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.50000012px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:center;writing-mode:lr;text-anchor:middle;fill:#8c8c8c;stroke:none;stroke-width:0;"
          sodipodi:linespacing="125%">14</text>
       <text
-         x="9.1913786"
+         x="10.13104"
          class="text"
          font-size="3.49999"
-         y="87.142281"
+         y="80.377632"
          id="text160"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.49999976px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.50000024px;line-height:125%;font-family:'Droid Sans';-inkscape-font-specification:'Droid Sans, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#787878;stroke:none;stroke-width:0"
          sodipodi:linespacing="125%">RUN/SS1</text>
       <line
          id="connector24pin"
          connectorname="GND"
          class="pin"
-         y1="36.063332"
-         y2="36.063332"
-         x1="0.34999901"
-         x2="7.5499902"
+         y1="29.124155"
+         y2="29.124155"
+         x1="-7.4340572"
+         x2="3.4912829"
          style="stroke:#787878;stroke-width:0;stroke-linecap:round" />
       <g
          height="0.000283465"
@@ -917,11 +925,11 @@
          id="connector23pin"
          connectorname="VDD"
          class="pin"
-         y1="7.0988827"
-         y2="7.0988827"
-         x1="0.34999901"
-         x2="7.5499902"
-         style="stroke:#787878;stroke-width:0.69999802;stroke-linecap:round" />
+         y1="0.041161083"
+         y2="0.041161083"
+         x1="-6.9413977"
+         x2="6.9264431"
+         style="stroke:#787878;stroke-width:0.97148311;stroke-linecap:round" />
     </g>
   </g>
 </svg>
