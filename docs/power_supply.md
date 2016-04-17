@@ -1,6 +1,6 @@
 # Three Channel Switching Regulator
 
-![Circuit Diagram][images/power_supply.png]
+![Circuit Diagram](images/power_supply.png)
 
 ## Inductor Selection
 
