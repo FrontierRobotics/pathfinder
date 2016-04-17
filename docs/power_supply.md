@@ -20,14 +20,21 @@ The LT3514 operates robustly in fault conditions. Cycle-by-cycle peak current li
 
 The LT3514 features output voltage tracking and sequencing, programmable frequency, programmable undervoltage lockout, and a power good pin to indicate when all ouputs are in regulation.
 
+Channel 3 has the highest current rating, and thus will be used to supply the Raspberry Pi and 5V bus. Channel 1, at 1A, will supply the 3.3V bus. Channel 4 will supply the 5V critical bus for power monitoring and smart shutdown/startup circuitry. Channels 1 and 3 will be controlled by the power monitoring circuit. Channel 4 will always be on. By that nature, EN/UVLO will always be enabled as well to ensure constant operation.
+
 ### FB Resistor Network
+
+```
+R1 = R2 * ((Vout/0.8V) - 1)
+```
+
 
 ### Inductor Selection
 
-
+```
 L = 2 * (VOUT + VD)/fSW for Channels 1, 4
-
 L = (VOUT + VD)/fSW for Channel 3
+```
 
 ### Bill of Materials
 
