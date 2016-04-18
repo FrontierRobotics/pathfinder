@@ -24,10 +24,23 @@ Channel 3 has the highest current rating, and thus will be used to supply the Ra
 
 ### FB Resistor Network
 
+The general formula for the FB resistor network is:
+
 ```
 R1 = R2 * ((Vout/0.8V) - 1)
 ```
+The datasheet states to use 1% tolerance resisitors, and that a good value for R2 is 10.2kΩ. R2 should not exceed 20kΩ to avoid bias current error.
 
+```
+Channel 1: 1A, 3.3V
+R1 = 10.2kΩ * ((3.3V/0.8V - 1) = 31875Ω ~ 31.6kΩ
+
+Channel 3: 2A, 5V
+R1 = 10.2kΩ * ((5V/0.8V - 1) = 53550Ω ~ 53.6kΩ
+
+Channel 4: 1A, 5V
+R1 = 10.2kΩ * ((5V/0.8V - 1) = 53550Ω ~ 53.6kΩ
+```
 
 ### Inductor Selection
 
