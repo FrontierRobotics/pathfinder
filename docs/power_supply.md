@@ -29,6 +29,7 @@ The general formula for the FB resistor network is:
 ```
 R1 = R2 * ((Vout/0.8V) - 1)
 ```
+
 The datasheet states to use 1% tolerance resisitors, and that a good value for R2 is 10.2kΩ. R2 should not exceed 20kΩ to avoid bias current error.
 
 ```
@@ -41,6 +42,12 @@ R1 = 10.2kΩ * ((5V/0.8V - 1) = 53550Ω ~ 53.6kΩ
 Channel 4: 1A, 5V
 R1 = 10.2kΩ * ((5V/0.8V - 1) = 53550Ω ~ 53.6kΩ
 ```
+
+### Input Voltage Range
+
+The minimum input voltage to regulate the output generally has to be at least 400mV greater than the greatest programmed output voltage. The only exception is when the largest output is less than 2.8V in which case the minimum is 3.2V
+
+The absolute maximum input voltage is 40V, and the LT3514 will regulate so long as the voltage remains less than or equal to that value. However, for constant frequency operation the maximum input voltage is TODO
 
 ### Inductor Selection
 
