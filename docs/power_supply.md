@@ -3,7 +3,7 @@
 The power supply for the mainboard is designed with the following features:
 
 * Ample current for the Raspberry Pi.
-* 5V and 3.3V voltage buses.
+* 5V and 3.3V buses.
 * Safe shutdown.
 * Power quality monitoring and low-voltage protection. 
 * Wide voltage input range.
