@@ -4,4 +4,6 @@ This is the main repository for the Pathfinder Rover. You're in the right spot f
 
 ## Documentation
 
-[Power Supply](docs/power_supply.md)
+Mainboard:
+
+* [Power Supply](docs/power_supply.md)
