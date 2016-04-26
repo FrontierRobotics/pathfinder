@@ -69,7 +69,9 @@ VIN(PS) = [(5V + 0.4V)/(1.0 MHz * 110ns)] + 0.4V - 0.4V = 49.091V = 40V (device 
 VIN(PS) = [(3.3V + 0.4V)/(1.0 MHz * 110ns)] + 0.4V - 0.4V = 40.7V = 40V (device maximum)
 ```
 
-The final recommended input voltage range is `5.4V < VIN < 40V`. 
+conclusion:
+
+The computed input voltage range is `5.4V < VIN < 40V`, and `VD = 0.4V`.
 
 ### Inductor Selection
 
