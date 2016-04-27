@@ -96,6 +96,47 @@ fSW = 1.0 MHz
 RT = 18.2kΩ @ ±1%
 ```
 
+## BOOST Regulator and SKY Pin Considerations
+
+The on-chip boost regulator generates the SKY voltage to be 4.85V above VIN. The SKY voltage is the source of the drive current for the buck regulators that drive the output channels. A good choice for the inductor that will ensure each buck regulator will have sufficient drive current is given by:
+
+```
+L = 20.5µH / f
+```
+
+where `f` is in MHz. This gives a value of `L = 20.5µH` for `f = 1.0 MHz`.
+
+The optimal SKY pin output current requirement and inductor value is calculated by:
+
+```
+ISKY = (IOUT1 * VOUT1 + IOUT3 * VOUT3 + IOUT4 * VOUT4) / 50 * VIN
+
+L = VIN * DC5 / 2 * fSW * [0.3 * (1 - 0.25 * DC5) - ISKY]
+```
+
+where:
+
+* `fSW = 1.0 MHz` is the programmed switching frequency.
+* `VIN = 12V`, which will be a typical value.
+* `DC5 = 0.29412` is the boost regulator duty cycle, given by: `DC5 = 5V/(VIN + 5V)`.
+* `VOUT3,4 = 5V`, `VOUT1 = 3.3V`, `IOUT1,4 = 1A`, `IOUT3 = 2A`
+
+therefore:
+
+```
+ISKY = (1A * 3.3V + 2A * 5V + 1A * 5V) / 50 * 12
+ISKY = 18.3 / 600 = 30.5mA
+
+L = 12V * 0.29412 / 2 * 1.0 MHz * [0.3 * (1 - 0.25 * 0.29412) - 30.5mA]
+L = 3.52944 / 2000000 * (0.3 * 0.92647 - 0.0305)
+L = 3.52944 / 2000000 * 0.247441 = 0.00000713188194H
+L ≅ 7.1µH
+```
+
+conclusion:
+
+The optimal value of the inductor is 7.1µH for `VIN = 12V`. TODO
+
 ## Inductor Selection
 
 ```
