@@ -6,4 +6,5 @@ This is the main repository for the Pathfinder Rover. You're in the right spot f
 
 Mainboard:
 
-* [Power Supply](docs/power_supply.md)
+* [Power Supply](docs/mainboard_power_supply.md)
+* [Power Monitor](docs/mainboard_power_monitor.md)
