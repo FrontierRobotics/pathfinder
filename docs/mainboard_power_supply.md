@@ -81,6 +81,22 @@ Our computed `VIN(PS) = 40.7V` exceeds the maximum of 40V. In addition, the data
 
 The recommended input voltage range is `5.4V < VIN < 36V`.
 
+## Frequency Selection
+
+There are two ways to program the frequency:
+
+* Tying a 1% tolerance resistor `RT` from the `RT/SYNC` pin to ground.
+* Synchronize the internal oscillator to an external clock.
+
+For our power supply, we'll use the first method. The 1.0 MHz frequency choosen is in the midrange of the LT3514's 250kHz to 2.5MHz operating range. In addition, as shown above, 1.0 MHz results in a desirable `VIN(PS)`. The datasheet includes a table for choosing the proper resistor value for different frequencies.
+
+conclusion:
+
+```
+fSW = 1.0 MHz
+RT = 18.2kΩ @ ±1%
+```
+
 ## Inductor Selection
 
 ```
