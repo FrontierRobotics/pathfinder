@@ -2,10 +2,9 @@
 
 The power supply for the mainboard is designed with the following features:
 
-* Ample current for the Raspberry Pi.
-* Wide voltage input range.
-* Selectively disabled 5V and 3.3V buses.
-* Always-on 5V critical power for mainboard power monitor.
+* Wide voltage input range of 5.4V to 36V.
+* Selectively disabled 2A, 5V and 1A, 3.3V power buses.
+* Always-On 1A, 5V critical power bus.
 
 ## Circuit Overview
 
@@ -77,9 +76,9 @@ VIN(PS) = [(3.3V + 0.4V)/(1.0 MHz * 110ns)] + 0.4V - 0.4V = 40.7V = 40V (device 
 
 conclusion:
 
-Our computed `VIN(PS) = 40.7V` exceeds the maximum of 40V. In addition, the datasheet recommends not starting the LT3514 at input voltages greater than 36V, as the LT3514 must simultaneously conduct maximum currents at high VIN.
+Our computed `VIN(PS) = 40.7V` exceeds the maximum of 40V, and thus 40V shall be the upper value of VIN. However, the datasheet recommends not starting the LT3514 at input voltages greater than 36V, as the LT3514 must simultaneously conduct maximum currents at high VIN.
 
-The recommended input voltage range is `5.4V < VIN < 36V`.
+Therefore, the recommended input voltage range is `5.4V < VIN < 36V`.
 
 ## Frequency Selection
 
