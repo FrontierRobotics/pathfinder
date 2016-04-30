@@ -133,9 +133,18 @@ L = 3.52944 / 2000000 * 0.247441 = 0.00000713188194H
 L ≅ 7.1µH
 ```
 
+From the example in the datasheet using different output voltages, we calculated this optimal value of L:
+
+```
+ISKY = 13.4 / 600 = 22.3mA
+L ≅ 6.9µH
+```
+
+This is very close to our computed value. The value of L chosen for the example is 10µH. We will also use this value for our design.
+
 conclusion:
 
-The optimal value of the inductor is 7.1µH for `VIN = 12V`. TODO
+The chosen value of the inductor is 10µH for `VIN = 12V`.
 
 ## Inductor Selection
 
