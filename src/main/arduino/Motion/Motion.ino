@@ -20,7 +20,7 @@ void loop() {
   lcd_set_brightness(0xFF);
   delay(1000);
 
-  lcd_set_cursor(5, 1);
+  lcd_set_cursor(1, 5);
   lcd_print("Hi!");
   delay(1000);
 }

@@ -19,7 +19,7 @@ void lcd_initialize() {
   pinMode(txPin, OUTPUT);
   serial.begin(9600);                // 9600 baud is chip comm speed
 
-  lcd_print("?G420");                // set display geometry,  4 x 20 characters in this case
+  lcd_set_geometry(4, 20);           // set display geometry,  4 x 20 characters in this case
   delay(500);                           // pause to allow LCD EEPROM to program
 
   lcd_set_brightness(0xFF);          // set backlight to ff hex, maximum brightness
@@ -66,12 +66,26 @@ void lcd_clear() {
   lcd_print("?f");
 }
 
+void lcd_set_geometry(byte rows, byte columns) {
+  lcd_print("?G%d%02d", rows, columns);
+}
+
 void lcd_set_brightness(byte brightness) {
   lcd_print("?B%02X", brightness);
 }
 
-void lcd_set_cursor(byte x, byte y) {
-  lcd_print("?x%02d?y%d", x, y);
+void lcd_set_cursor(byte row, byte column) {
+  //lcd_print("?x%02d?y%d", column, row);
+  lcd_set_cursor_row(row);
+  lcd_set_cursor_column(column);
+}
+
+void lcd_set_cursor_row(byte row) {
+  lcd_print("?y%d", row);
+}
+
+void lcd_set_cursor_column(byte column) {
+  lcd_print("?x%02d", column);
 }
 
 void lcd_underline_cursor() {
