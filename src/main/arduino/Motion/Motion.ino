@@ -27,8 +27,15 @@ void loop() {
   delay(1000);
 
   lcd.set_cursor(1, 5);
-  lcd.print("Hi!");
+  lcd.print("Hello!");
   delay(1000);
+  lcd.set_cursor(2, 10);
+  lcd.print("Howdy!");
+  delay(1000);
+  lcd.blink_cursor();
+  delay(1000);
+  lcd.disable_cursor();
+  lcd.clear_screen();
 }
 
 void requestEvent() {

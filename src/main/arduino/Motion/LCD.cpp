@@ -81,15 +81,13 @@ void LCD::set_cursor_column(byte column) {
   print("?x%02d", column);
 }
 
-/*
-void lcd_underline_cursor() {
-  lcd_print("?c3");
+void LCD::underline_cursor() {
+  print("?c3");
 }
 
-void lcd_blink_cursor() {
-  lcd_print("?c2");
+void LCD::blink_cursor() {
+  print("?c2");
 }
-*/
 
 void LCD::disable_cursor() {
   print("?c0");

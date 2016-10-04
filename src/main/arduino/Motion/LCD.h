@@ -13,6 +13,8 @@ class LCD {
     void set_cursor(byte row, byte column);
     void set_cursor_row(byte row);
     void set_cursor_column(byte column);
+    void underline_cursor();
+    void blink_cursor();
     void disable_cursor();
     void print(char const *fmt, ... );
   private:
