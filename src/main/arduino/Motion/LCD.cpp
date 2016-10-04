@@ -3,6 +3,7 @@
 #include "LCD.h"
 
 #define LCD_RX_PIN 30  // rxPin is immaterial - not used - just make this an unused Arduino pin number
+#define BAUD_RATE 9600 // 9600 baud is chip comm speed
 
 LCD::LCD(int txPin,byte rows, byte columns) : _serial(SoftwareSerial(LCD_RX_PIN, txPin)) {
   pinMode(txPin, OUTPUT);
@@ -11,46 +12,24 @@ LCD::LCD(int txPin,byte rows, byte columns) : _serial(SoftwareSerial(LCD_RX_PIN,
 }
 
 void LCD::begin() {
-  _serial.begin(9600);                // 9600 baud is chip comm speed
+  _serial.begin(BAUD_RATE);
   
   set_geometry(_rows, _columns);
-  delay(500);                           // pause to allow LCD EEPROM to program
-
   set_brightness(0xFF);
-  delay(1000);                          // pause to allow LCD EEPROM to program
-
-  print("?s6");                  // set tabs to six spaces
-  delay(1000);                          // pause to allow LCD EEPROM to program
-
-  print("?D00000000000000000");  // define special characters
-  delay(300);                           // delay to allow write to EEPROM
-  // see moderndevice.com for a handy custom char generator (software app)
+  set_tabs(6);                  // set tabs to six spaces
+  
+  define_character("?D00000000000000000");
   clear_screen();
   delay(10);
   print("...");
-
-
-  //crashes LCD without delay
-  print("?D11010101010101010");
-  delay(300);
-
-  print("?D21818181818181818");
-  delay(300);
-
-  print("?D31c1c1c1c1c1c1c1c");
-  delay(300);
-
-  print("?D41e1e1e1e1e1e1e1e");
-  delay(300);
-
-  print("?D51f1f1f1f1f1f1f1f");
-  delay(300);
-
-  print("?D60000000000040E1F");
-  delay(300);
-
-  print("?D70000000103070F1F");
-  delay(300);
+  
+  define_character("?D11010101010101010");
+  define_character("?D21818181818181818");
+  define_character("?D31c1c1c1c1c1c1c1c");
+  define_character("?D41e1e1e1e1e1e1e1e");
+  define_character("?D51f1f1f1f1f1f1f1f");
+  define_character("?D60000000000040E1F");
+  define_character("?D70000000103070F1F");
 
   disable_cursor();
   delay(300);
@@ -60,12 +39,14 @@ void LCD::clear_screen() {
   print("?f");
 }
 
-void LCD::set_geometry(byte rows, byte columns) {
-  print("?G%d%02d", rows, columns);
-}
-
 void LCD::set_brightness(byte brightness) {
   print("?B%02X", brightness);
+  delay(1000); // pause to allow LCD EEPROM to program
+}
+
+void LCD::set_tabs(byte tabs) {
+  print("?s%d", tabs);
+  delay(1000); // pause to allow LCD EEPROM to program
 }
 
 void LCD::set_cursor(byte row, byte column) {
@@ -100,4 +81,17 @@ void LCD::print(char const *fmt, ... ) {
   vsnprintf(buf, 20, fmt, args);
   va_end (args);
   _serial.print(buf);
+}
+
+//Private Methods
+
+void LCD::set_geometry(byte rows, byte columns) {
+  print("?G%d%02d", rows, columns);
+  delay(500);  // pause to allow LCD EEPROM to program
+}
+
+// see moderndevice.com for a handy custom char generator (software app)
+void LCD::define_character(String definition) {
+  print(definition);
+  delay(300);  // delay to allow write to EEPROM
 }
