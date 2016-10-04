@@ -91,7 +91,7 @@ void LCD::set_geometry(byte rows, byte columns) {
 }
 
 // see moderndevice.com for a handy custom char generator (software app)
-void LCD::define_character(String definition) {
+void LCD::define_character(const char* definition) {
   print(definition);
   delay(300);  // delay to allow write to EEPROM
 }

@@ -23,7 +23,7 @@ class LCD {
     SoftwareSerial _serial;
     byte _rows, _columns;
     void set_geometry(byte rows, byte columns);
-    void define_character(String definition);
+    void define_character(const char* definition);
 };
 
 #endif
