@@ -19,7 +19,7 @@ void lcd_initialize() {
   pinMode(txPin, OUTPUT);
   serial.begin(9600);                // 9600 baud is chip comm speed
 
-  lcd_print("?G216");                // set display geometry,  2 x 16 characters in this case
+  lcd_print("?G420");                // set display geometry,  4 x 20 characters in this case
   delay(500);                           // pause to allow LCD EEPROM to program
 
   lcd_set_brightness(0xFF);          // set backlight to ff hex, maximum brightness
@@ -95,7 +95,7 @@ void lcd_print(char const *fmt, ... ) {
   serial.print(buf);
 }
 
-void lcd_test() {
+void lcd_demo() {
   serial.print("?f");                   // clear the LCD
 
   delay(1000);
