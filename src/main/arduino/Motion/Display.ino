@@ -66,12 +66,15 @@ void lcd_clear() {
   lcd_print("?f");
 }
 
-void lcd_set_brightness(int brightness) {
-  lcd_print("?B%2X", brightness);
+void lcd_set_brightness(byte brightness) {
+  lcd_print("?B%02X", brightness);
 }
 
+void lcd_set_cursor(byte x, byte y) {
+  lcd_print("?x%02d?y%d", x, y);
+}
 
-void lcd_print(char *fmt, ... ) {
+void lcd_print(char const *fmt, ... ) {
   char buf[20];
   va_list args;
   va_start (args, fmt );

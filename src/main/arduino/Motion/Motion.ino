@@ -7,12 +7,10 @@ void setup() {
   Wire.onReceive(receiveEvent);
   Wire.onRequest(requestEvent);
   lcd_initialize();
+  lcd_clear();
 }
 
 void loop() {
-  delay(100);
-  lcd_clear();
-  delay(1000);
   lcd_set_brightness(0x00);
   delay(1000);
   lcd_set_brightness(0x22);
@@ -20,6 +18,10 @@ void loop() {
   lcd_set_brightness(0x44);
   delay(1000);
   lcd_set_brightness(0xFF);
+  delay(1000);
+
+  lcd_set_cursor(5, 1);
+  lcd_print("Hi!");
   delay(1000);
 }
 
