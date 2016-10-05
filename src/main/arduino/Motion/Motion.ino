@@ -14,28 +14,15 @@ void setup() {
   Wire.onRequest(requestEvent);
   lcd.begin();
   lcd.clear_screen();
+  lcd.set_brightness(0x77);
+  lcd.set_cursor(1, 5);
+  lcd.print("Pathfinder");
+  lcd.set_cursor(2, 7);
+  lcd.print("Online");
 }
 
 void loop() {
-  lcd.set_brightness(0x00);
-  delay(1000);
-  lcd.set_brightness(0x22);
-  delay(1000);
-  lcd.set_brightness(0x44);
-  delay(1000);
-  lcd.set_brightness(0xFF);
-  delay(1000);
-
-  lcd.set_cursor(1, 5);
-  lcd.print("Hello!");
-  delay(1000);
-  lcd.set_cursor(2, 10);
-  lcd.print("Howdy!");
-  delay(1000);
-  lcd.blink_cursor();
-  delay(1000);
-  lcd.disable_cursor();
-  lcd.clear_screen();
+  delay(100);
 }
 
 void requestEvent() {
@@ -43,8 +30,12 @@ void requestEvent() {
 }
 
 void receiveEvent(int howMany) {
+  lcd.clear_screen();
   while (1 < Wire.available()) { // loop through all but the last
     char c = Wire.read(); // receive byte as a character
+    lcd.print("%c", c);
   }
   int x = Wire.read();    // receive byte as an integer
+
+  lcd.print("%d", x);
 }
