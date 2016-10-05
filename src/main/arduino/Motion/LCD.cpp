@@ -5,7 +5,7 @@
 #define LCD_RX_PIN 30  // rxPin is immaterial - not used - just make this an unused Arduino pin number
 #define BAUD_RATE 9600 // 9600 baud is chip comm speed
 
-LCD::LCD(int txPin,byte rows, byte columns) : _serial(SoftwareSerial(LCD_RX_PIN, txPin)) {
+LCD::LCD(int txPin, byte rows, byte columns) : _serial(SoftwareSerial(LCD_RX_PIN, txPin)) {
   pinMode(txPin, OUTPUT);
   _rows = rows;
   _columns = columns;
@@ -13,16 +13,16 @@ LCD::LCD(int txPin,byte rows, byte columns) : _serial(SoftwareSerial(LCD_RX_PIN,
 
 void LCD::begin() {
   _serial.begin(BAUD_RATE);
-  
+
   set_geometry(_rows, _columns);
   set_brightness(0xFF);
   set_tabs(6);
-  
+
   define_character("?D00000000000000000");
   clear_screen();
   delay(10);
   print("...");
-  
+
   define_character("?D11010101010101010");
   define_character("?D21818181818181818");
   define_character("?D31c1c1c1c1c1c1c1c");

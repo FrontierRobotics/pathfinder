@@ -18,7 +18,7 @@ class LCD {
     void blink_cursor();
     void disable_cursor();
     void print(char const *fmt, ... );
-    
+
   private:
     SoftwareSerial _serial;
     byte _rows, _columns;
