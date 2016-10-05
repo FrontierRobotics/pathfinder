@@ -31,11 +31,9 @@ void requestEvent() {
 
 void receiveEvent(int howMany) {
   lcd.clear_screen();
-  while (1 < Wire.available()) { // loop through all but the last
-    char c = Wire.read(); // receive byte as a character
+  
+  while (0 < Wire.available()) {
+    char c = Wire.read();
     lcd.print("%c", c);
   }
-  int x = Wire.read();    // receive byte as an integer
-
-  lcd.print("%d", x);
 }
