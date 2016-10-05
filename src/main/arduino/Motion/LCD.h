@@ -24,6 +24,7 @@ class LCD {
     byte _rows, _columns;
     void set_geometry(byte rows, byte columns);
     void define_character(const char* definition);
+    void eeprom_delay(unsigned long milliseconds);
 };
 
 #endif

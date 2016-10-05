@@ -16,7 +16,7 @@ void LCD::begin() {
   
   set_geometry(_rows, _columns);
   set_brightness(0xFF);
-  set_tabs(6);                  // set tabs to six spaces
+  set_tabs(6);
   
   define_character("?D00000000000000000");
   clear_screen();
@@ -41,12 +41,12 @@ void LCD::clear_screen() {
 
 void LCD::set_brightness(byte brightness) {
   print("?B%02X", brightness);
-  delay(1000); // pause to allow LCD EEPROM to program
+  eeprom_delay(1000);
 }
 
 void LCD::set_tabs(byte tabs) {
   print("?s%d", tabs);
-  delay(1000); // pause to allow LCD EEPROM to program
+  eeprom_delay(1000);
 }
 
 void LCD::set_cursor(byte row, byte column) {
@@ -87,11 +87,15 @@ void LCD::print(char const *fmt, ... ) {
 
 void LCD::set_geometry(byte rows, byte columns) {
   print("?G%d%02d", rows, columns);
-  delay(500);  // pause to allow LCD EEPROM to program
+  eeprom_delay(500);
 }
 
 // see moderndevice.com for a handy custom char generator (software app)
 void LCD::define_character(const char* definition) {
   print(definition);
-  delay(300);  // delay to allow write to EEPROM
+  eeprom_delay(300);
+}
+
+void LCD::eeprom_delay(unsigned long milliseconds) {
+  delay(milliseconds);
 }
