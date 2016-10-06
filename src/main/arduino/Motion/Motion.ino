@@ -32,6 +32,19 @@ void requestEvent() {
 void receiveEvent(int howMany) {
   lcd.clear_screen();
   
+  if(0 >= Wire.available())
+  {
+    return;
+  }
+  
+  byte internal_address = Wire.read();
+  
+  lcd.set_cursor(0, 0);
+  lcd.print("Int Addr: 0x%02X", internal_address);
+  lcd.set_cursor(1, 0);
+  lcd.print("Data:", internal_address);
+  lcd.set_cursor(2, 0);
+  
   while (0 < Wire.available()) {
     char c = Wire.read();
     lcd.print("%c", c);
