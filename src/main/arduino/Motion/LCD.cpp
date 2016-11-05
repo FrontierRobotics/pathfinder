@@ -23,14 +23,6 @@ void LCD::begin() {
   delay(10);
   print("...");
 
-  define_character("?D11010101010101010");
-  define_character("?D21818181818181818");
-  define_character("?D31c1c1c1c1c1c1c1c");
-  define_character("?D41e1e1e1e1e1e1e1e");
-  define_character("?D51f1f1f1f1f1f1f1f");
-  define_character("?D60000000000040E1F");
-  define_character("?D70000000103070F1F");
-
   disable_cursor();
   delay(300);
 }
@@ -60,14 +52,6 @@ void LCD::set_cursor_row(byte row) {
 
 void LCD::set_cursor_column(byte column) {
   print("?x%02d", column);
-}
-
-void LCD::underline_cursor() {
-  print("?c3");
-}
-
-void LCD::blink_cursor() {
-  print("?c2");
 }
 
 void LCD::disable_cursor() {
