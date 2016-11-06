@@ -10,6 +10,7 @@
 
 LCD lcd = LCD(LCD_TX_PIN, LCD_ROWS, LCD_COLUMNS);
 char i2c_buffer[I2C_BUFFER_SIZE];
+byte internal_address = 0x00;
 
 void setup() {
   Wire.begin(I2C_ADDRESS);
@@ -29,16 +30,12 @@ void loop() {
 }
 
 void requestEvent() {
-  Wire.write(0x7E);
+  Wire.write("test");
+  Wire.write(internal_address);
 }
 
 void receiveEvent(int howMany) {
-  if (0 >= Wire.available())
-  {
-    return;
-  }
-
-  byte internal_address = Wire.read();
+  get_internal_address();
   int data_size = get_data();
 
   switch (internal_address) {
@@ -46,6 +43,17 @@ void receiveEvent(int howMany) {
       lcd.print(i2c_buffer);
       break;
   }
+}
+
+byte get_internal_address() {
+  if (0 >= Wire.available())
+  {
+    return 0x00;
+  }
+
+  internal_address = Wire.read();
+
+  return internal_address;
 }
 
 int get_data()
