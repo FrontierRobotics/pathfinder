@@ -92,7 +92,8 @@ Go into Start->Preferences->Raspberry Pi Configuration
 
 ### System
 
-Nothing to change.
+Set Password to: <Your Password> (default is raspberry)
+Set Hostname to: pathfinder
 
 ### Interfaces
 
