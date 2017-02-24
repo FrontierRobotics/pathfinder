@@ -84,9 +84,44 @@ ifdown wlan0 && ifup wlan0
 
 Sometimes it fails on the first try. Give it another go before banging your head too hard.
 
+## Configuration
+
+Turn on the settings, depending on what you'll need. Don't turn on stuff you won't use, it'll just take more energy. Once finished, click OK. It'll probably want to reboot.
+
+Go into Start->Preferences->Raspberry Pi Configuration
+
+### System
+
+Nothing to change.
+
+### Interfaces
+
+Turn on SSH, SPI, I2C, Serial.
+
+### Performance
+
+Nothing to change.
+
+### Localisation
+
+Set Locale to:
+
+* Language: en (English)
+* Country: US (USA)
+* Character Set: UTF-8
+
+Set Timezone to:
+
+* Area: Etc
+* Location: UTC
+
+Set Keyboard to: United States, English (US)
+
+Set WiFi Country Code to: US United States
+
 ----
 
-## References
+### References
 
 * [ThinkPenguin.com](https://www.thinkpenguin.com/gnu-linux/how-configure-wifi-card-using-command-line-or-terminal)
 * [RaspberryPi.org](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md)
