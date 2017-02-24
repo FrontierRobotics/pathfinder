@@ -17,7 +17,7 @@ sudo su
 
 ### Step 3: Identify your network adapter and SSID:
 
-Note: Take note of the line with 802.11 on it and what comes to the left of it. This is you wireless card and you'll need in in the steps that follow.
+Note: Take note of the line with 802.11 on it and what comes to the left of it. This is your wireless card and you'll need it in the steps that follow.
 
 ```
 iwconfig
