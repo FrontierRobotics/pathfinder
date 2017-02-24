@@ -4,6 +4,10 @@ This is the main repository for the Pathfinder Rover. You're in the right spot f
 
 ## Documentation
 
+Development:
+
+* [Raspberry Pi Setup](docs/raspberry_pi_setup.md)
+
 Mainboard:
 
 * [Power Supply](docs/mainboard_power_supply.md)
