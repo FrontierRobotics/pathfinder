@@ -5,7 +5,7 @@
 1. Download the latest [Raspbian Jessie with Pixel image](https://downloads.raspberrypi.org/raspbian_latest).
 2. Use [Etcher](https://etcher.io/) to burn the image onto the SD card.
 
-Once you've the image loaded hook up a keyboard, mouse, TV via HDMI, and USB power supply. Then power it up!
+Once you've got the image loaded hook up a keyboard, mouse, TV via HDMI, and USB power supply. Then power it up!
 
 ## Set up WiFi
 
