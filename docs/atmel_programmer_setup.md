@@ -34,9 +34,14 @@ sudo avrdude -P gpio -c gpio -p atmega328p -U lfuse:r:-:h -U hfuse:r:-:h -U efus
 
 To flash the device:
 
- ```
+```
 sudo avrdude -P gpio -c gpio -p atmega328p -U flash:w:Motion.ino.standard.hex
- ```
+```
+To read the device's flash:
+
+```
+sudo avrdude -P gpio -c gpio -p atmega328p -U flash:r:backup.hex:r
+```
 
 ## Customization
 
@@ -73,3 +78,4 @@ That's it! [See the rest of the documentation to continue.](../README.md)
 * [Steve Marple - ISP Design](http://blog.stevemarple.co.uk/2012/07/avrarduino-isp-programmer-using.html)
 * [Steve Marple - How to Use](http://blog.stevemarple.co.uk/2013/03/how-to-use-gpio-version-of-avrdude-on.html)
 * [Steve Marple - RPi_RFM12B_ISPd](https://github.com/stevemarple/RPi_RFM12B_ISP/tree/master/software/avrdude)
+* [Sparkfun](https://learn.sparkfun.com/tutorials/pocket-avr-programmer-hookup-guide/using-avrdude)
