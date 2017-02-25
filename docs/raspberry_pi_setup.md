@@ -169,7 +169,7 @@ alias la='ls -A'
 alias l='ls -CF'
 ```
 
-That's it! [See the rest of the documentation to continue.](README.md)
+That's it! [See the rest of the documentation to continue.](../README.md)
 
 ----
 
