@@ -8,7 +8,7 @@ See our [release roadmap](https://github.com/FrontierRobotics/pathfinder/milesto
 
 ## Documentation
 
-Development:
+Inital Setup:
 
 * [Raspberry Pi Setup](docs/raspberry_pi_setup.md)
 * [Atmel Programmer Setup](docs/atmel_programmer_setup.md)
