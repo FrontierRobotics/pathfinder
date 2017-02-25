@@ -150,9 +150,24 @@ Once you've got the IP, log in through ssh:
 ssh pi@192.168.1.16
 ```
 
-## Upgrade the OS
+## Upgrade and customize the OS.
 
 Run `sudo apt-get update` and `sudo apt-get upgrade` to get the system up-to-date.
+
+Install the following packages:
+
+```
+sudo apt-get install vim 
+```
+
+Then edit `~/.bashrc` and uncomment the following lines:
+
+```
+# some more ls aliases
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+```
 
 ----
 
