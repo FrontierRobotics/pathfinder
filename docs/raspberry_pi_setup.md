@@ -157,7 +157,7 @@ Run `sudo apt-get update` and `sudo apt-get upgrade` to get the system up-to-dat
 Install the following packages:
 
 ```
-sudo apt-get install vim 
+sudo apt-get install vim screen minicom
 ```
 
 Then edit `~/.bashrc` and uncomment the following lines:
