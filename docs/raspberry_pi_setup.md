@@ -62,13 +62,13 @@ Copy the content of what that produced at the bottom of `/etc/wpa_supplicant/wpa
 
 TODO Paste in example
 
-### Step 6: Set up the /etc/network/interfaces file:
+### Step 6: Set up the network interface file:
 
 ```
 nano /etc/network/interfaces
 ```
 
-Edit the existing interface, or add the following to the bottom of the file (if your wireless adapter does not show up as wlan0 replace it with what did show up when running iwconfig above) to get an IP address automatically via your DHCP/router/access point:
+Edit the existing interface, or set up a new one at the bottom of the file (if your wireless adapter does not show up as wlan0 replace it with what did show up when running iwconfig above) to get an IP address automatically via your DHCP/router/access point:
 
 ```
 auto wlan0
@@ -86,7 +86,7 @@ Sometimes it fails on the first try. Give it another go before banging your head
 
 ## Configuration
 
-Turn on the settings, depending on what you'll need. Don't turn on stuff you won't use, it'll just take more energy. Once finished, click OK. It'll probably want to reboot.
+Turn on the appropriate settings depending on what you'll need. Don't turn on stuff you won't use, it'll just take more energy. Once finished click OK. It'll probably want to reboot.
 
 Go into Start->Preferences->Raspberry Pi Configuration
 
@@ -123,7 +123,7 @@ Set WiFi Country Code to: US United States
 
 ## Get the IP and log in remotely
 
-Use SSH to log in using your new credentials. First find your Raspberry Pi's IP address running the following command:
+First find your Raspberry Pi's IP address running the following command:
 
 ```
 ifconfig
@@ -150,7 +150,9 @@ Once you've got the IP, log in through ssh:
 ssh pi@192.168.1.16
 ```
 
-For good measure, run `sudo apt-get update` and `sudo apt-get upgrade` to get the system up-to-date.
+## Upgrade the OS
+
+Run `sudo apt-get update` and `sudo apt-get upgrade` to get the system up-to-date.
 
 ----
 
