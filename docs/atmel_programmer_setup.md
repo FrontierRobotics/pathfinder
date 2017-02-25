@@ -8,4 +8,4 @@ That's it! [See the rest of the documentation to continue.](../README.md)
 
 ### References
 
-* 
+* [Steve Marple](http://blog.stevemarple.co.uk/2012/07/avrarduino-isp-programmer-using.html)
