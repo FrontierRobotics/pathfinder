@@ -175,5 +175,6 @@ That's it! [See the rest of the documentation to continue.](../README.md)
 
 ### References
 
-* [ThinkPenguin.com](https://www.thinkpenguin.com/gnu-linux/how-configure-wifi-card-using-command-line-or-terminal)
-* [RaspberryPi.org](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md)
+* [ThinkPenguin.com - Wireless CLI](https://www.thinkpenguin.com/gnu-linux/how-configure-wifi-card-using-command-line-or-terminal)
+* [RaspberryPi.org - Wireless CLI](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md)
+* [RaspberryPi.org - IP Address](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
