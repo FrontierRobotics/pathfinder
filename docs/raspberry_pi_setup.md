@@ -121,6 +121,37 @@ Set Keyboard to: United States, English (US)
 
 Set WiFi Country Code to: US United States
 
+## Get the IP and log in remotely
+
+Use SSH to log in using your new credentials. First find your Raspberry Pi's IP address running the following command:
+
+```
+ifconfig
+```
+
+Or use `nmap` to find it on the network:
+
+```
+nmap -sn 192.168.1.0/24
+
+Starting Nmap 7.40 ( https://nmap.org ) at 2017-02-24 17:42 MST
+.
+.
+Nmap scan report for pathfinder (192.168.1.16)
+Host is up (0.038s latency).
+.
+.
+Nmap done: 256 IP addresses (9 hosts up) scanned in 2.41 seconds
+```
+
+Once you've got the IP, log in through ssh:
+
+```
+ssh pi@192.168.1.16
+```
+
+For good measure, run `sudo apt-get update` and `sudo apt-get upgrade` to get the system up-to-date.
+
 ----
 
 ### References
