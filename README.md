@@ -7,6 +7,8 @@ This is the main repository for the Pathfinder Rover. You're in the right spot f
 Development:
 
 * [Raspberry Pi Setup](docs/raspberry_pi_setup.md)
+* [Atmel Programmer Setup](docs/atmel_programmer_setup.md)
+* [GPS Setup](docs/gps_setup.md)
 
 Mainboard:
 
