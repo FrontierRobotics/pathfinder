@@ -150,7 +150,7 @@ Once you've got the IP, log in through ssh:
 ssh pi@192.168.1.16
 ```
 
-## Upgrade and customize the OS.
+## Upgrade and customize the OS
 
 Run `sudo apt-get update` and `sudo apt-get upgrade` to get the system up-to-date.
 
@@ -168,6 +168,8 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 ```
+
+That's it!
 
 ----
 
