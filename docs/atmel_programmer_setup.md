@@ -35,6 +35,7 @@ sudo avrdude -P gpio -c gpio -p atmega328p -U lfuse:r:-:h -U hfuse:r:-:h -U efus
 To flash the device:
 
  ```
+sudo avrdude -P gpio -c gpio -p atmega328p -U flash:w:Motion.ino.standard.hex
  ```
 
 ## Customization
