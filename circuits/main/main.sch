@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Device:R R4
+L main-rescue:R-Device R4
 U 1 1 5A51638A
 P 1250 1050
 F 0 "R4" V 1330 1050 50  0000 C CNN
@@ -25,7 +25,7 @@ F 3 "" H 1250 1050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R R5
+L main-rescue:R-Device R5
 U 1 1 5A5164FF
 P 1500 1050
 F 0 "R5" V 1580 1050 50  0000 C CNN
@@ -58,7 +58,7 @@ F 3 "" H 2200 1600 50  0001 L CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R R6
+L main-rescue:R-Device R6
 U 1 1 5A516CD7
 P 2500 1050
 F 0 "R6" V 2580 1050 50  0000 C CNN
@@ -69,7 +69,7 @@ F 3 "" H 2500 1050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R R7
+L main-rescue:R-Device R7
 U 1 1 5A516D34
 P 2750 1050
 F 0 "R7" V 2830 1050 50  0000 C CNN
@@ -80,7 +80,7 @@ F 3 "" H 2750 1050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR?
+L main-rescue:+3.3V-power #PWR?
 U 1 1 5A5170AD
 P 1250 800
 F 0 "#PWR?" H 1250 650 50  0001 C CNN
@@ -91,7 +91,7 @@ F 3 "" H 1250 800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L main-rescue:+5V-power #PWR?
 U 1 1 5A517131
 P 2750 800
 F 0 "#PWR?" H 2750 650 50  0001 C CNN
@@ -116,7 +116,7 @@ Text GLabel 6100 1300 2    50   Input ~ 0
 Text GLabel 6100 1400 2    50   Input ~ 0
 3.3V_SCL
 $Comp
-L power:+5V #PWR?
+L main-rescue:+5V-power #PWR?
 U 1 1 5A51829A
 P 5000 800
 F 0 "#PWR?" H 5000 650 50  0001 C CNN
@@ -127,7 +127,7 @@ F 3 "" H 5000 800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L main-rescue:GND-power #PWR?
 U 1 1 5A5183B1
 P 5000 3600
 F 0 "#PWR?" H 5000 3350 50  0001 C CNN
@@ -146,7 +146,7 @@ Pi_SCK
 Text GLabel 6100 2100 2    50   Input ~ 0
 Pi_CE0
 $Comp
-L power:GND #PWR?
+L main-rescue:GND-power #PWR?
 U 1 1 5A51AFDC
 P 7050 1600
 F 0 "#PWR?" H 7050 1350 50  0001 C CNN
@@ -157,7 +157,7 @@ F 3 "" H 7050 1600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR?
+L main-rescue:+3.3V-power #PWR?
 U 1 1 5A51B010
 P 7050 800
 F 0 "#PWR?" H 7050 650 50  0001 C CNN
@@ -246,7 +246,7 @@ F 3 "" H 2400 5650 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR?
+L main-rescue:+3.3V-power #PWR?
 U 1 1 5A51C3A8
 P 2200 2400
 F 0 "#PWR?" H 2200 2250 50  0001 C CNN
@@ -257,7 +257,7 @@ F 3 "" H 2200 2400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L main-rescue:+5V-power #PWR?
 U 1 1 5A51C3EC
 P 1950 2400
 F 0 "#PWR?" H 1950 2250 50  0001 C CNN
@@ -268,7 +268,7 @@ F 3 "" H 1950 2400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L main-rescue:GND-power #PWR?
 U 1 1 5A51C430
 P 2200 3100
 F 0 "#PWR?" H 2200 2850 50  0001 C CNN
@@ -279,7 +279,7 @@ F 3 "" H 2200 3100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5VP #PWR?
+L main-rescue:+5VP-power #PWR?
 U 1 1 5A51D86B
 P 1400 2700
 F 0 "#PWR?" H 1400 2550 50  0001 C CNN
@@ -290,7 +290,7 @@ F 3 "" H 1400 2700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR?
+L main-rescue:+3.3V-power #PWR?
 U 1 1 5A51E05A
 P 2200 3500
 F 0 "#PWR?" H 2200 3350 50  0001 C CNN
@@ -301,7 +301,7 @@ F 3 "" H 2200 3500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L main-rescue:+5V-power #PWR?
 U 1 1 5A51E0A2
 P 2000 3500
 F 0 "#PWR?" H 2000 3350 50  0001 C CNN
@@ -312,7 +312,7 @@ F 3 "" H 2000 3500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L main-rescue:GND-power #PWR?
 U 1 1 5A51E145
 P 2200 4200
 F 0 "#PWR?" H 2200 3950 50  0001 C CNN
@@ -323,7 +323,7 @@ F 3 "" H 2200 4200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR?
+L main-rescue:+3.3V-power #PWR?
 U 1 1 5A51E1C1
 P 2200 4600
 F 0 "#PWR?" H 2200 4450 50  0001 C CNN
@@ -334,7 +334,7 @@ F 3 "" H 2200 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L main-rescue:+5V-power #PWR?
 U 1 1 5A51E257
 P 2000 4600
 F 0 "#PWR?" H 2000 4450 50  0001 C CNN
@@ -345,7 +345,7 @@ F 3 "" H 2000 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L main-rescue:GND-power #PWR?
 U 1 1 5A51E362
 P 2200 5300
 F 0 "#PWR?" H 2200 5050 50  0001 C CNN
@@ -356,7 +356,7 @@ F 3 "" H 2200 5300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR?
+L main-rescue:+3.3V-power #PWR?
 U 1 1 5A51E3AA
 P 2200 5700
 F 0 "#PWR?" H 2200 5550 50  0001 C CNN
@@ -367,7 +367,7 @@ F 3 "" H 2200 5700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L main-rescue:+5V-power #PWR?
 U 1 1 5A51E3F2
 P 2000 5700
 F 0 "#PWR?" H 2000 5550 50  0001 C CNN
@@ -378,7 +378,7 @@ F 3 "" H 2000 5700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L main-rescue:GND-power #PWR?
 U 1 1 5A51E6BA
 P 2200 6400
 F 0 "#PWR?" H 2200 6150 50  0001 C CNN
@@ -418,7 +418,7 @@ F 3 "" H 1500 3100 50  0001 C CNN
 	0    -1   1    0   
 $EndComp
 $Comp
-L power:+5V #PWR?
+L main-rescue:+5V-power #PWR?
 U 1 1 5A826BFE
 P 1600 2700
 F 0 "#PWR?" H 1600 2550 50  0001 C CNN
@@ -429,7 +429,7 @@ F 3 "" H 1600 2700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5VP #PWR?
+L main-rescue:+5VP-power #PWR?
 U 1 1 5A826CCB
 P 1400 3800
 F 0 "#PWR?" H 1400 3650 50  0001 C CNN
@@ -451,7 +451,7 @@ F 3 "" H 1500 4200 50  0001 C CNN
 	0    -1   1    0   
 $EndComp
 $Comp
-L power:+5V #PWR?
+L main-rescue:+5V-power #PWR?
 U 1 1 5A826CD7
 P 1600 3800
 F 0 "#PWR?" H 1600 3650 50  0001 C CNN
@@ -462,7 +462,7 @@ F 3 "" H 1600 3800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5VP #PWR?
+L main-rescue:+5VP-power #PWR?
 U 1 1 5A826DB5
 P 1400 4900
 F 0 "#PWR?" H 1400 4750 50  0001 C CNN
@@ -484,7 +484,7 @@ F 3 "" H 1500 5300 50  0001 C CNN
 	0    -1   1    0   
 $EndComp
 $Comp
-L power:+5V #PWR?
+L main-rescue:+5V-power #PWR?
 U 1 1 5A826DC1
 P 1600 4900
 F 0 "#PWR?" H 1600 4750 50  0001 C CNN
@@ -495,7 +495,7 @@ F 3 "" H 1600 4900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5VP #PWR?
+L main-rescue:+5VP-power #PWR?
 U 1 1 5A826EEE
 P 1400 6000
 F 0 "#PWR?" H 1400 5850 50  0001 C CNN
@@ -517,7 +517,7 @@ F 3 "" H 1500 6400 50  0001 C CNN
 	0    -1   1    0   
 $EndComp
 $Comp
-L power:+5V #PWR?
+L main-rescue:+5V-power #PWR?
 U 1 1 5A826EFA
 P 1600 6000
 F 0 "#PWR?" H 1600 5850 50  0001 C CNN
@@ -541,7 +541,7 @@ $EndComp
 Text GLabel 6700 5600 2    50   Input ~ 0
 AVR_RST
 $Comp
-L Device:R R3
+L main-rescue:R-Device R3
 U 1 1 5A8291E8
 P 6850 5700
 F 0 "R3" V 6930 5700 50  0000 C CNN
@@ -552,7 +552,7 @@ F 3 "" H 6850 5700 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:+5VP #PWR?
+L main-rescue:+5VP-power #PWR?
 U 1 1 5A829FCD
 P 7200 5600
 F 0 "#PWR?" H 7200 5450 50  0001 C CNN
@@ -573,7 +573,7 @@ PWM0
 Text GLabel 6100 6250 2    50   Input ~ 0
 AVR_D4
 $Comp
-L Device:C_Small C3
+L main-rescue:C_Small-Device C3
 U 1 1 5A82A4ED
 P 3800 4250
 F 0 "C3" V 3750 4300 50  0000 L CNN
@@ -584,7 +584,7 @@ F 3 "" H 3800 4250 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:+5VP #PWR?
+L main-rescue:+5VP-power #PWR?
 U 1 1 5A82A947
 P 4000 4150
 F 0 "#PWR?" H 4000 4000 50  0001 C CNN
@@ -595,7 +595,7 @@ F 3 "" H 4000 4150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C_Small C4
+L main-rescue:C_Small-Device C4
 U 1 1 5A82AA5F
 P 3800 4550
 F 0 "C4" V 3750 4600 50  0000 L CNN
@@ -606,7 +606,7 @@ F 3 "" H 3800 4550 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L main-rescue:GND-power #PWR?
 U 1 1 5A82ADF7
 P 3600 5300
 F 0 "#PWR?" H 3600 5050 50  0001 C CNN
@@ -617,7 +617,7 @@ F 3 "" H 3600 5300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L main-rescue:GND-power #PWR?
 U 1 1 5A82AFC9
 P 4000 6600
 F 0 "#PWR?" H 4000 6350 50  0001 C CNN
@@ -634,7 +634,7 @@ PWM2
 Text GLabel 6100 6550 2    50   Input ~ 0
 AVR_D7
 $Comp
-L Device:Crystal 16MHz
+L main-rescue:Crystal-Device 16MHz
 U 1 1 5A9B414C
 P 6800 4900
 F 0 "16MHz" H 6800 5050 50  0000 C CNN
@@ -645,7 +645,7 @@ F 3 "" H 6800 4900 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:C_Small C1
+L main-rescue:C_Small-Device C1
 U 1 1 5A9B4351
 P 7100 5100
 F 0 "C1" V 7000 5100 50  0000 L CNN
@@ -656,7 +656,7 @@ F 3 "" H 7100 5100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:C_Small C2
+L main-rescue:C_Small-Device C2
 U 1 1 5A9B4456
 P 7100 4700
 F 0 "C2" V 7000 4700 50  0000 L CNN
@@ -667,7 +667,7 @@ F 3 "" H 7100 4700 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L main-rescue:GND-power #PWR?
 U 1 1 5A9B4E12
 P 7400 5200
 F 0 "#PWR?" H 7400 4950 50  0001 C CNN
@@ -962,7 +962,7 @@ ADC6
 Text GLabel 4000 5700 0    50   Input ~ 0
 ADC7
 $Comp
-L Device:C_Small C5
+L main-rescue:C_Small-Device C5
 U 1 1 5C427D88
 P 3800 4850
 F 0 "C5" V 3750 4900 50  0000 L CNN
@@ -1021,7 +1021,7 @@ Connection ~ 4000 6550
 Wire Wire Line
 	4000 6550 4000 6600
 $Comp
-L Device:C_Small C6
+L main-rescue:C_Small-Device C6
 U 1 1 5C49CBB5
 P 3800 5150
 F 0 "C6" V 3750 5200 50  0000 L CNN
@@ -1095,7 +1095,7 @@ Connection ~ 6600 5700
 Wire Wire Line
 	6600 5700 6000 5700
 $Comp
-L 74LVC244APW_112:74LVC244APW,112 U1
+L main-rescue:74LVC244APW,112-74LVC244APW_112 U1
 U 1 1 5C2C23F0
 P 9400 4800
 F 0 "U1" H 9400 5770 50  0000 C CNN
@@ -1113,7 +1113,7 @@ $EndComp
 Text GLabel 8500 4400 0    50   Input ~ 0
 Pi_CE0
 $Comp
-L power:+3.3V #PWR?
+L main-rescue:+3.3V-power #PWR?
 U 1 1 5C2C3A64
 P 8100 4200
 F 0 "#PWR?" H 8100 4050 50  0001 C CNN
@@ -1124,7 +1124,7 @@ F 3 "" H 8100 4200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R R1
+L main-rescue:R-Device R1
 U 1 1 5C2D35AA
 P 8350 4300
 F 0 "R1" V 8430 4300 50  0000 C CNN
@@ -1135,7 +1135,7 @@ F 3 "" H 8350 4300 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L main-rescue:GND-power #PWR?
 U 1 1 5C2D3BEC
 P 8600 5800
 F 0 "#PWR?" H 8600 5550 50  0001 C CNN
@@ -1170,7 +1170,7 @@ Connection ~ 8600 5700
 Wire Wire Line
 	8600 5700 8600 5800
 $Comp
-L power:+3.3V #PWR?
+L main-rescue:+3.3V-power #PWR?
 U 1 1 5C33B0D4
 P 8600 4100
 F 0 "#PWR?" H 8600 3950 50  0001 C CNN
@@ -1229,7 +1229,7 @@ Wire Wire Line
 Text Notes 8950 6050 0    60   ~ 0
 ATMEGA Programmer
 $Comp
-L power:GND #PWR?
+L main-rescue:GND-power #PWR?
 U 1 1 5E497E40
 P 8650 1300
 F 0 "#PWR?" H 8650 1050 50  0001 C CNN
@@ -1240,7 +1240,7 @@ F 3 "" H 8650 1300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5VP #PWR?
+L main-rescue:+5VP-power #PWR?
 U 1 1 5E4A241A
 P 8200 1150
 F 0 "#PWR?" H 8200 1000 50  0001 C CNN
