@@ -41,9 +41,23 @@ void loop()
   delay(100);
 }
 
+// Display Reference
+// 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19
+//                   P  a  t  h  f  i  n  d  e  r
+// M  1  :     F  0  5  5     M  2  :     R  0  5  5
+//
+// L  :  0  5  5     F  :  0  5  5     R  :  0  5  5
+
 void requestEvent()
 {
-  Wire.write("howdy");
+  byte sensor_left = analogRead(A0);
+  byte sensor_front = analogRead(A1);
+  byte sensor_right = analogRead(A2);
+  Wire.write(sensor_left);
+  Wire.write(sensor_front);
+  Wire.write(sensor_right);
+  lcd.set_cursor(3, 0);
+  lcd.print("L:%03d F:%03d R:%03d", sensor_left, sensor_front, sensor_right);
 }
 
 void receiveEvent(int receive_size)
@@ -52,17 +66,12 @@ void receiveEvent(int receive_size)
   {
     return;
   }
-  byte internal_address = Wire.read();
 
+  byte internal_address = Wire.read();
   switch (internal_address)
   {
-  case LCD_ADDRESS:
-    lcd_event(receive_size - 1);
-    break;
   case MOTOR1_ADDRESS:
-    // Display Reference
-    // 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19
-    // M  1  :     F  0  5  5     M  2  :     R  0  5  5
+
     motor_event(&motor1, receive_size - 1);
     lcd.set_cursor(1, 0);
     lcd.print("M1: %s", motor1.status());
@@ -72,59 +81,8 @@ void receiveEvent(int receive_size)
     lcd.set_cursor(1, 9);
     lcd.print("M2: %s", motor2.status());
     break;
-  }
-}
-
-void lcd_event(int receive_size)
-{
-  if (!Wire.available())
-  {
+  default:
     return;
-  }
-  byte command = Wire.read();
-
-  switch (command)
-  {
-  case LCD_COMMAND_WRITE:
-  {
-    int data_size = get_data();
-    if (data_size > 0)
-    {
-      lcd.print(i2c_buffer);
-    }
-    break;
-  }
-  case LCD_COMMAND_SET_CURSOR:
-  {
-    if (!Wire.available())
-    {
-      return;
-    }
-    byte row = Wire.read();
-    if (!Wire.available())
-    {
-      return;
-    }
-    byte column = Wire.read();
-    lcd.set_cursor(row, column);
-    break;
-  }
-  case LCD_COMMAND_SET_BRIGHTNESS:
-  {
-    if (!Wire.available())
-    {
-      return;
-    }
-    byte brightness = Wire.read();
-    lcd.set_brightness(brightness);
-    break;
-  }
-  case LCD_COMMAND_CLEAR:
-  {
-    lcd.clear_screen();
-    lcd.set_cursor(0, 0);
-    break;
-  }
   }
 }
 
@@ -148,19 +106,4 @@ void motor_event(Motor *motor, int receive_size)
   {
     motor->reverse(speed);
   }
-}
-
-int get_data()
-{
-  int index = 0;
-
-  memset(i2c_buffer, 0x00, sizeof(i2c_buffer));
-
-  while ((0 < Wire.available()) && (index <= I2C_BUFFER_SIZE))
-  {
-    i2c_buffer[index] = Wire.read();
-    index++;
-  }
-
-  return index;
 }

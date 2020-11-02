@@ -15,7 +15,7 @@ void Motor::forward(byte speed)
 {
     _reversed = false;
     _speed = speed;
-    digitalWrite(_dPin, HIGH);
+    digitalWrite(_dPin, LOW);
     analogWrite(_pwmPin, speed);
 }
 
@@ -23,7 +23,7 @@ void Motor::reverse(byte speed)
 {
     _reversed = true;
     _speed = speed;
-    digitalWrite(_dPin, LOW);
+    digitalWrite(_dPin, HIGH);
     analogWrite(_pwmPin, speed);
 }
 
