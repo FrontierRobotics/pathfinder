@@ -25,6 +25,8 @@ The available actions and their internal address:
 LCD
 ---
 
+**_Not Implemented_** - not necessary, and somewhat unsafe to transmit arbitrary message lengths.
+
 The second byte in the transmission (Byte 1) specifies the command for the LCD.
 
 | Command        | Byte 1 | Parameters                |

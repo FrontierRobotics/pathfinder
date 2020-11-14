@@ -12,7 +12,7 @@ See our [release roadmap](https://github.com/FrontierRobotics/pathfinder/milesto
 
 Inital Setup:
 
-* [Raspberry Pi Setup](docs/raspberry_pi_setup.md)
+* [Raspberry Pi Setup](docs/rpi_setup.md)
 * [Atmel Programmer Setup](docs/atmel_programmer_setup.md)
 * [GPS Setup](docs/gps_setup.md)
 
@@ -25,3 +25,8 @@ Arduino Code:
 
 * [Protocol](docs/i2c_protocol.md)
 * [Development](docs/arduino_build.md)
+
+Raspberry Pi Code:
+
+* [Protocol](docs/i2c_protocol.md)
+* [Development](docs/rpi_build.md)
