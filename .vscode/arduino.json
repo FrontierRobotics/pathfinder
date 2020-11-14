@@ -1,4 +1,5 @@
 {
     "board": "arduino:avr:uno",
-    "sketch": "src/main/arduino/Motion/Motion.ino"
+    "sketch": "arduino/Main/Main.ino",
+    "output": "arduino/Main/build"
 }

@@ -1,5 +1,8 @@
 {
     "files.associations": {
         "type_traits": "cpp"
-    }
+    },
+    "cSpell.words": [
+        "eeprom"
+    ]
 }

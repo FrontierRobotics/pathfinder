@@ -24,3 +24,4 @@ Mainboard Circuits:
 Arduino Code:
 
 * [Protocol](docs/i2c_protocol.md)
+* [Development](docs/arduino_build.md)
