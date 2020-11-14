@@ -4,7 +4,7 @@ Pathfinder uses the [Ultimate GPS module from Adafruit](https://www.adafruit.com
 
 ## Stealing back the serial port from the console
 
-In addition to enabling the serial port like we did in [Raspberry Pi Setup](raspberry_pi_setup.md), we also have to take it away from the console service.
+In addition to enabling the serial port like we did in [Raspberry Pi Setup](rpi_setup.md), we also have to take it away from the console service.
 
 ```
 sudo systemctl stop serial-getty@ttyS0.service
