@@ -2,4 +2,7 @@ module github.com/andycondon/pathfinder
 
 go 1.15
 
-require periph.io/x/periph v3.6.4+incompatible
+require (
+	github.com/stretchr/testify v1.6.1
+	periph.io/x/periph v3.6.4+incompatible
+)
