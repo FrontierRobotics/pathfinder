@@ -4,9 +4,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/andycondon/pathfinder/pkg/arduino"
 	"github.com/andycondon/pathfinder/pkg/ir"
 	"github.com/andycondon/pathfinder/pkg/path"
+	"github.com/andycondon/pathfinder/pkg/status"
 	"periph.io/x/periph/conn/i2c"
 	"periph.io/x/periph/conn/i2c/i2creg"
 	"periph.io/x/periph/host"
@@ -22,26 +22,39 @@ func main() {
 	if err != nil {
 		log.Fatalf("%v", err)
 	}
-	defer bus.Close()
+	defer func() {
+		if err := bus.Close(); err != nil {
+			log.Fatalf("%v", err)
+		}
+	}()
 
-	arduinoDev := &i2c.Dev{Addr: arduino.I2CAddress, Bus: bus}
+	var (
+		arduino = &i2c.Dev{Addr: 0x1A, Bus: bus}
+		irArray = &ir.SensorArray{
+			Left:    ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
+			Forward: ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
+			Right:   ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
+		}
+		s      = &status.Reader{Address: 0x10, Tx: arduino.Tx, IRArray: irArray}
+	)
 
-	a := arduino.New(arduinoDev.Tx, &ir.SensorArray{
-		Left:    ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
-		Forward: ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
-		Right:   ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
-	})
-
+	var lastReading status.Reading
 	for {
-		status, err := a.GetStatus()
+		reading, err := s.GetStatus()
 		if err != nil {
 			log.Printf("%v\n", err)
 			continue
 		}
 
-		p := path.Find(status.IR)
+		// Arduino status won't be the only input for path finding, so always find path based on all inputs.
+		p := path.Find(reading.IR)
 
-		log.Printf("%s Path:%v\n", status.IR.String(), p)
+		if reading != lastReading {
+			log.Printf("%s Path:%v\n", reading.IR.String(), p)
+		}
+		lastReading = reading
+
+
 		time.Sleep(time.Millisecond * 1000)
 	}
 }
