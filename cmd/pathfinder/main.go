@@ -4,7 +4,10 @@ import (
 	"log"
 	"time"
 
+	"github.com/andycondon/pathfinder/pkg/arduino"
+	"github.com/andycondon/pathfinder/pkg/ir"
 	"github.com/andycondon/pathfinder/pkg/path"
+	"periph.io/x/periph/conn/i2c"
 	"periph.io/x/periph/conn/i2c/i2creg"
 	"periph.io/x/periph/host"
 )
@@ -21,7 +24,13 @@ func main() {
 	}
 	defer bus.Close()
 
-	a := NewArduino(bus)
+	arduinoDev := &i2c.Dev{Addr: arduino.I2CAddress, Bus: bus}
+
+	a := arduino.New(arduinoDev.Tx, &ir.SensorArray{
+		Left:    ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
+		Forward: ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
+		Right:   ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
+	})
 
 	for {
 		status, err := a.GetStatus()

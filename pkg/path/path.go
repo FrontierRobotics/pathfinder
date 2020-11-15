@@ -5,20 +5,17 @@ import "github.com/andycondon/pathfinder/pkg/ir"
 type Path string
 
 const (
-	Clear   Path = "clear"
-	Forward      = "forward"
+	Forward Path = "forward"
 	Left         = "left"
 	Right        = "right"
 	Blocked      = "blocked"
 )
 
-func Find(irSensor ir.Sensor) Path {
-	l, f, r := irSensor.Proximity()
-
-	if l.IsClear() && f.IsClear() && r.IsClear() {
-		return Clear
+func Find(r ir.Reading) Path {
+	if r.AllClear() {
+		return Forward
 	}
-	if f < ir.ProximityNear && (l.IsFar() || r.IsFar()) {
+	if r.F < ir.ProximityNear && (r.L.IsFar() || r.R.IsFar()) {
 		return Forward
 	}
 	return Blocked
