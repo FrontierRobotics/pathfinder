@@ -43,7 +43,7 @@ func TestGetter_GetStatus(t *testing.T) {
 				}
 				return tc.txErr
 			}
-			r := status.Reader{Address: 0x10, Tx: tx, IRArray: irArray}
+			r := status.Reader{Addr: 0x10, Tx: tx, IRArray: irArray}
 
 			reading, err := r.GetStatus()
 

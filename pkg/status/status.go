@@ -10,13 +10,13 @@ type Tx func(w []byte, r []byte) error
 
 type Reader struct {
 	Tx
-	Address byte
+	Addr    byte
 	IRArray *ir.SensorArray
 }
 
 func (r *Reader) GetStatus() (Reading, error) {
 	read := make([]byte, 3)
-	if err := r.Tx([]byte{r.Address}, read); err != nil {
+	if err := r.Tx([]byte{r.Addr}, read); err != nil {
 		return Reading{}, err
 	}
 	return r.ReadStatus(read)
