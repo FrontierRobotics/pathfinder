@@ -21,6 +21,7 @@ char i2c_buffer[I2C_BUFFER_SIZE];
 // Remember to use Arduino pins, not physical ones
 Motor motor1 = Motor(2, 3);
 Motor motor2 = Motor(4, 5);
+volatile byte sensor_left, sensor_front, sensor_right;
 
 void setup()
 {
@@ -36,28 +37,31 @@ void setup()
   lcd.print("Pathfinder");
 }
 
-void loop()
-{
-  delay(100);
-}
-
 // Display Reference
 // 0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19
 //                   P  a  t  h  f  i  n  d  e  r
 // M  1  :     F  0  5  5     M  2  :     R  0  5  5
 //
 // L  :  0  5  5     F  :  0  5  5     R  :  0  5  5
+void loop()
+{
+  lcd.set_cursor(1, 0);
+  lcd.print("M1: %s", motor1.status());
+  lcd.set_cursor(1, 9);
+  lcd.print("M2: %s", motor2.status());
+  lcd.set_cursor(3, 0);
+  lcd.print("L:%03d F:%03d R:%03d", sensor_left, sensor_front, sensor_right);
+  delay(1000);
+}
 
 void requestEvent()
 {
-  byte sensor_left = analogRead(A0);
-  byte sensor_front = analogRead(A1);
-  byte sensor_right = analogRead(A2);
+  sensor_left = analogRead(A0);
+  sensor_front = analogRead(A1);
+  sensor_right = analogRead(A2);
   Wire.write(sensor_left);
   Wire.write(sensor_front);
   Wire.write(sensor_right);
-  lcd.set_cursor(3, 0);
-  lcd.print("L:%03d F:%03d R:%03d", sensor_left, sensor_front, sensor_right);
 }
 
 void receiveEvent(int receive_size)
@@ -71,15 +75,10 @@ void receiveEvent(int receive_size)
   switch (internal_address)
   {
   case MOTOR1_ADDRESS:
-
     motor_event(&motor1, receive_size - 1);
-    lcd.set_cursor(1, 0);
-    lcd.print("M1: %s", motor1.status());
     break;
   case MOTOR2_ADDRESS:
     motor_event(&motor2, receive_size - 1);
-    lcd.set_cursor(1, 9);
-    lcd.print("M2: %s", motor2.status());
     break;
   default:
     return;
