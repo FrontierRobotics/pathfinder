@@ -20,8 +20,8 @@ func (f *Finder) Find() {
 		IR      ir.Reading
 		GPS     gps.Reading
 		forward = motor.Command{M: motor.Forward, S: motor.Slow}
-		stop    = motor.Command{M: motor.Park}
 		left    = motor.Command{M: motor.RotateLeft, S: motor.Medium}
+		right   = motor.Command{M: motor.RotateRight, S: motor.Medium}
 	)
 	for {
 		select {
@@ -33,20 +33,28 @@ func (f *Finder) Find() {
 			log.Println("finder ir - " + IR.String())
 		}
 
-		if IR.AllClear() {
+		if !IR.F.IsNear() && !IR.L.IsNear() && !IR.R.IsNear() {
 			f.Drive <- forward
 			continue
 		}
-		if !IR.F.IsNear() && (IR.L.IsFar() || IR.R.IsFar()) {
-			f.Drive <- forward
+		if !IR.F.IsNear() && IR.L.IsNear() && !IR.R.IsNear() {
+			f.Drive <- right
+			continue
+		}
+		if !IR.F.IsNear() && !IR.L.IsNear() && IR.R.IsNear() {
+			f.Drive <- left
 			continue
 		}
 		if IR.F.IsNear() && !IR.L.IsNear() {
 			f.Drive <- left
 			continue
 		}
-		if IR.F.IsNear() {
-			f.Drive <- stop
+		if IR.F.IsNear() && !IR.R.IsNear() {
+			f.Drive <- right
+			continue
+		}
+		if IR.AllNear() {
+			f.Drive <- right
 			continue
 		}
 	}
