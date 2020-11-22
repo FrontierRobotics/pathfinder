@@ -1,14 +1,5 @@
 package motor
 
-type Speed int
-
-const (
-	Stop Speed = iota
-	Slow
-	Medium
-	Full
-)
-
 const (
 	forward = 0x01
 	reverse = 0x00

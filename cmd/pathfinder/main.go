@@ -2,6 +2,10 @@ package main
 
 import (
 	"log"
+	"os"
+	"os/signal"
+	"sync"
+	"syscall"
 	"time"
 
 	"github.com/andycondon/pathfinder/pkg/ir"
@@ -36,31 +40,94 @@ func main() {
 			Forward: ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
 			Right:   ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
 		}
-		s      = &status.Reader{Addr: 0x10, Tx: arduino.Tx, IRArray: irArray}
-		m1     = &motor.Motor{Addr: 0x01, Slow: 0x50, Med: 0xA0}
-		m2     = &motor.Motor{Addr: 0x02, Slow: 0x50, Med: 0xA0}
-		driver = &motor.Driver{Left: m1, Right: m2, Tx: arduino.Tx, ReadStatus: s.ReadStatus}
+		statusReader = &status.Reader{Addr: 0x10, Tx: arduino.Tx, IRArray: irArray}
+		m1           = &motor.Motor{Addr: 0x01, Slow: 0x50, Med: 0xA0}
+		m2           = &motor.Motor{Addr: 0x02, Slow: 0x50, Med: 0xA0}
+		driver       = &motor.Driver{Left: m1, Right: m2, Tx: arduino.Tx, ReadStatus: statusReader.ReadStatus}
+		driverCh     = make(chan motor.Command, 100)
+		irCh         = make(chan ir.Reading, 100)
+		errCh        = make(chan error)
+		stopCh       = make(chan os.Signal, 1)
+		done         = make(chan struct{})
+		pathfinder   = path.Finder{Done: done, IR: irCh, Drive: driverCh}
+		wg           sync.WaitGroup
 	)
 
-	var lastReading status.Reading
-	for {
-		reading, err := s.GetStatus()
-		if err != nil {
-			log.Printf("%v\n", err)
-			continue
+	// This is where the magic happens
+	wg.Add(1)
+	go func() {
+		defer func() {
+			log.Println("pathfinder loop done")
+			wg.Done()
+		}()
+		pathfinder.Find()
+	}()
+
+	wg.Add(1)
+	go func() {
+		defer func() {
+			log.Println("err loop done")
+			wg.Done()
+		}()
+		for {
+			select {
+			case err := <-errCh:
+				if err != nil {
+					log.Printf("%v\n", err)
+					// TODO Do we want to close the stop channel to end the program?
+				}
+			case <-done:
+				return
+			}
 		}
+	}()
 
-		// IR readings won't be the only input for path finding, so always find path based on all inputs.
-		p := path.Find(reading.IR)
+	// Start the routine for I2C communication
+	// Keeps all I2C communication single-threaded
+	wg.Add(1)
+	go func() {
+		var (
+			ticker      = time.NewTicker(100 * time.Millisecond)
+			reading     status.Reading
+			lastReading status.Reading
+			err         error
+		)
+		defer func() {
+			log.Println("i2c loop done")
+			// Send a command to park so we don't drive off a cliff
+			_, err = driver.D(motor.Command{M: motor.Park})
+			ticker.Stop()
+			wg.Done()
+		}()
+		for {
+			select {
+			case <-done:
+				return
+			case cmd := <-driverCh:
+				_, err = driver.D(cmd)
+			case <-ticker.C:
+				reading, err = statusReader.Get()
+				if err != nil {
+					errCh <- err
+					break
+				}
 
-		if reading != lastReading {
-			log.Printf("%s Path:%v\n", reading.IR.String(), p)
+				// TODO Add other I2C sensor checks here
+
+				// Check individual sensors for differences, sending readings on respective channels
+				// TODO Hmm, not so sure about just sending changes. More experimentation needed.
+				if reading.IR != lastReading.IR {
+					irCh <- reading.IR
+				}
+				lastReading = reading
+			}
 		}
-		lastReading = reading
+	}()
 
-		// TODO Use the path to tell the driver what to do
-		driver = driver
-
-		time.Sleep(time.Millisecond * 1000)
-	}
+	signal.Notify(stopCh, syscall.SIGTERM, syscall.SIGINT)
+	<-stopCh
+	log.Println("shutting down...")
+	close(done)
+	wg.Wait()
+	log.Println("shut down complete")
 }

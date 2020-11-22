@@ -14,7 +14,7 @@ type Reader struct {
 	IRArray *ir.SensorArray
 }
 
-func (r *Reader) GetStatus() (Reading, error) {
+func (r *Reader) Get() (Reading, error) {
 	read := make([]byte, 3)
 	if err := r.Tx([]byte{r.Addr}, read); err != nil {
 		return Reading{}, err
