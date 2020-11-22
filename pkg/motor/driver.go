@@ -1,6 +1,10 @@
 package motor
 
-import "github.com/andycondon/pathfinder/pkg/status"
+import (
+	"errors"
+
+	"github.com/andycondon/pathfinder/pkg/status"
+)
 
 type Tx func(w []byte, r []byte) error
 
@@ -12,24 +16,22 @@ type Driver struct {
 	Left, Right *Motor
 }
 
-func (d *Driver) Stop() (status.Reading, error) {
-	return d.txPair(d.Left.Stop(), d.Right.Stop())
-}
-
-func (d *Driver) Forward(s Speed) (status.Reading, error) {
-	return d.txPair(d.Left.Forward(s), d.Right.Forward(s))
-}
-
-func (d *Driver) Reverse(s Speed) (status.Reading, error) {
-	return d.txPair(d.Left.Reverse(s), d.Right.Reverse(s))
-}
-
-func (d *Driver) RotateLeft(s Speed) (status.Reading, error) {
-	return d.txPair(d.Left.Reverse(s), d.Right.Forward(s))
-}
-
-func (d *Driver) RotateRight(s Speed) (status.Reading, error) {
-	return d.txPair(d.Left.Forward(s), d.Right.Reverse(s))
+func (d *Driver) D(cmd Command) (status.Reading, error) {
+	s := cmd.S
+	switch cmd.M {
+	case Park:
+		return d.txPair(d.Left.Stop(), d.Right.Stop())
+	case Forward:
+		return d.txPair(d.Left.Forward(s), d.Right.Forward(s))
+	case Reverse:
+		return d.txPair(d.Left.Reverse(s), d.Right.Reverse(s))
+	case RotateLeft:
+		return d.txPair(d.Left.Reverse(s), d.Right.Forward(s))
+	case RotateRight:
+		return d.txPair(d.Left.Forward(s), d.Right.Reverse(s))
+	default:
+		return status.Reading{}, errors.New("unknown motor movement")
+	}
 }
 
 func (d *Driver) txPair(m1Cmd, m2Cmd []byte) (status.Reading, error) {
