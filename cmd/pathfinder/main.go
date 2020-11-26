@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bufio"
+	"io"
 	"log"
 	"os"
 	"os/signal"
@@ -8,30 +10,48 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/andycondon/pathfinder/pkg/gps"
 	"github.com/andycondon/pathfinder/pkg/ir"
 	"github.com/andycondon/pathfinder/pkg/motor"
 	"github.com/andycondon/pathfinder/pkg/path"
 	"github.com/andycondon/pathfinder/pkg/status"
+	"github.com/jacobsa/go-serial/serial"
 	"periph.io/x/periph/conn/i2c"
 	"periph.io/x/periph/conn/i2c/i2creg"
 	"periph.io/x/periph/host"
 )
+
+func Close(closer io.Closer) {
+	err := closer.Close()
+	if err != nil {
+		log.Println(err)
+	}
+}
 
 func main() {
 	if _, err := host.Init(); err != nil {
 		log.Fatalf("%v", err)
 	}
 
+	// Open /dev/ttyS0 UART serial port
+	serialPort, err := serial.Open(serial.OpenOptions{
+		PortName:        "/dev/ttyS0",
+		BaudRate:        9600,
+		DataBits:        8,
+		StopBits:        1,
+		MinimumReadSize: 4,
+	})
+	if err != nil {
+		log.Fatalf("serial.Open: %v", err)
+	}
+	defer Close(serialPort)
+
 	// Open i2c bus #1
 	bus, err := i2creg.Open("1")
 	if err != nil {
 		log.Fatalf("%v", err)
 	}
-	defer func() {
-		if err := bus.Close(); err != nil {
-			log.Fatalf("%v", err)
-		}
-	}()
+	defer Close(bus)
 
 	var (
 		arduino = &i2c.Dev{Addr: 0x1A, Bus: bus}
@@ -46,10 +66,11 @@ func main() {
 		driver       = &motor.Driver{Left: m1, Right: m2, Tx: arduino.Tx, ReadStatus: statusReader.ReadStatus}
 		driverCh     = make(chan motor.Command, 100)
 		irCh         = make(chan ir.Reading, 100)
+		gpsCh        = make(chan gps.Reading, 100)
 		errCh        = make(chan error)
 		stopCh       = make(chan os.Signal, 1)
 		done         = make(chan struct{})
-		pathfinder   = path.Finder{Done: done, IR: irCh, Drive: driverCh}
+		pathfinder   = path.Finder{Done: done, GPS: gpsCh, IR: irCh, Drive: driverCh}
 		wg           sync.WaitGroup
 	)
 
@@ -78,6 +99,29 @@ func main() {
 				}
 			case <-done:
 				return
+			}
+		}
+	}()
+
+	// Start the routine for reading from the ttyS0 serial port
+	wg.Add(1)
+	go func() {
+		var (
+			reader  = bufio.NewReader(serialPort)
+			scanner = bufio.NewScanner(reader)
+		)
+		defer func() {
+			log.Println("ttyS0 loop done")
+			wg.Done()
+		}()
+		for scanner.Scan() {
+			select {
+			case <-done:
+				return
+			default:
+				sentence := scanner.Text()
+				reading := gps.FromGPRMC(sentence)
+				gpsCh <- reading
 			}
 		}
 	}()
