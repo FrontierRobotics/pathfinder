@@ -120,8 +120,11 @@ func main() {
 				return
 			default:
 				sentence := scanner.Text()
-				reading := gps.FromGPRMC(sentence)
-				gpsCh <- reading
+				if reading, err := gps.FromGPRMC(sentence); err != nil {
+					errCh <- err
+				} else {
+					gpsCh <- reading
+				}
 			}
 		}
 	}()
