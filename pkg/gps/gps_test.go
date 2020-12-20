@@ -6,6 +6,7 @@ import (
 
 	"github.com/andycondon/pathfinder/pkg/gps"
 	"github.com/andycondon/pathfinder/pkg/nav"
+	"github.com/golang/geo/s2"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -33,7 +34,7 @@ func TestFromGPRMC(t *testing.T) {
 				Time:     nov272020,
 				Fix:      true,
 				Speed:    1.0340333333244 * nav.MetersPerSecond,
-				Position: nav.Position{Latitude: 41.18582333333333, Longitude: -104.80841333333333},
+				Position: s2.LatLngFromDegrees(41.18582333333333, -104.80841333333333),
 			},
 		},
 		{
@@ -43,7 +44,7 @@ func TestFromGPRMC(t *testing.T) {
 				Time:     nov272020,
 				Fix:      true,
 				Speed:    1.0340333333244 * nav.MetersPerSecond,
-				Position: nav.Position{Latitude: -27.787338333333334, Longitude: 136.492770},
+				Position: s2.LatLngFromDegrees(-27.787338333333334, 136.492770),
 			},
 		},
 		{
@@ -57,7 +58,7 @@ func TestFromGPRMC(t *testing.T) {
 			reading: gps.Reading{
 				Fix:      true,
 				Speed:    1.0340333333244 * nav.MetersPerSecond,
-				Position: nav.Position{Latitude: 41.18582333333333, Longitude: -104.80841333333333},
+				Position: s2.LatLngFromDegrees(41.18582333333333, -104.80841333333333),
 			},
 		},
 		{
@@ -71,7 +72,7 @@ func TestFromGPRMC(t *testing.T) {
 			reading: gps.Reading{
 				Fix:      true,
 				Speed:    1.0340333333244 * nav.MetersPerSecond,
-				Position: nav.Position{Latitude: 41.18582333333333, Longitude: -104.80841333333333},
+				Position: s2.LatLngFromDegrees(41.18582333333333, -104.80841333333333),
 			},
 		},
 		{
@@ -90,7 +91,7 @@ func TestFromGPRMC(t *testing.T) {
 			reading: gps.Reading{
 				Time:     nov272020,
 				Fix:      true,
-				Position: nav.Position{Latitude: 41.18582333333333, Longitude: -104.80841333333333},
+				Position: s2.LatLngFromDegrees(41.18582333333333, -104.80841333333333),
 			},
 		},
 		{
@@ -149,8 +150,8 @@ func TestReading_String(t *testing.T) {
 			Time:     nov272020,
 			Fix:      true,
 			Speed:    1.0340333333244 * nav.MetersPerSecond,
-			Position: nav.Position{Latitude: 41.1858233, Longitude: -104.8084133},
+			Position: s2.LatLngFromDegrees(41.1858233, -104.8084133),
 		}
-		assert.Equal(t, `fix: active, time: 2020-11-27 19:17:36 +0000 UTC, speed: 1.034033 m/s, position: 41.185823, -104.808413`, r.String())
+		assert.Equal(t, `fix: active, time: 2020-11-27 19:17:36 +0000 UTC, speed: 1.034033 m/s, position: [41.1858233, -104.8084133]`, r.String())
 	})
 }

@@ -8,13 +8,14 @@ import (
 	"time"
 
 	"github.com/andycondon/pathfinder/pkg/nav"
+	"github.com/golang/geo/s2"
 )
 
 type Reading struct {
 	Fix      bool
 	Time     time.Time
 	Speed    nav.Speed
-	Position nav.Position
+	Position s2.LatLng
 }
 
 func (r Reading) String() string {
@@ -106,23 +107,23 @@ func speedFromSentence(s string) (nav.Speed, error) {
 	return nav.Speed(nav.Knots * t), nil
 }
 
-func postitionFromSentence(lat, latDir, lon, lonDir string) (nav.Position, error) {
+func postitionFromSentence(lat, latDir, lon, lonDir string) (s2.LatLng, error) {
 	if lat == "" || latDir == "" || lon == "" || lonDir == "" {
-		return nav.Position{}, nil
+		return s2.LatLng{}, nil
 	}
 	if len(lat) < 2 {
-		return nav.Position{}, errors.New("invalid format for latitude")
+		return s2.LatLng{}, errors.New("invalid format for latitude")
 	}
 	if len(lon) < 3 {
-		return nav.Position{}, errors.New("invalid format for longitude")
+		return s2.LatLng{}, errors.New("invalid format for longitude")
 	}
-	latitude, err := angleFromSentence(lat, 2)
+	latitude, err := degreesFromSentence(lat, 2)
 	if err != nil {
-		return nav.Position{}, err
+		return s2.LatLng{}, err
 	}
-	longitude, err := angleFromSentence(lon, 3)
+	longitude, err := degreesFromSentence(lon, 3)
 	if err != nil {
-		return nav.Position{}, err
+		return s2.LatLng{}, err
 	}
 	if latDir == "S" {
 		latitude = latitude * -1
@@ -130,10 +131,10 @@ func postitionFromSentence(lat, latDir, lon, lonDir string) (nav.Position, error
 	if lonDir == "W" {
 		longitude = longitude * -1
 	}
-	return nav.Position{Latitude: latitude, Longitude: longitude}, nil
+	return s2.LatLngFromDegrees(latitude, longitude), nil
 }
 
-func angleFromSentence(a string, minLen int) (nav.Angle, error) {
+func degreesFromSentence(a string, minLen int) (float64, error) {
 	deg, err := strconv.ParseFloat(a[0:minLen], 64)
 	if err != nil {
 		return 0, err
@@ -142,9 +143,7 @@ func angleFromSentence(a string, minLen int) (nav.Angle, error) {
 	if err != nil {
 		return 0, err
 	}
-	degrees := nav.Angle(deg) * nav.Degrees
-	minutes := nav.Angle(min) * nav.Minutes
-	return degrees + minutes, nil
+	return deg + (min / 60), nil
 }
 
 func toInt(s string) int {
