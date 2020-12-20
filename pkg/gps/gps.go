@@ -18,6 +18,10 @@ type Reading struct {
 	Position s2.LatLng
 }
 
+func (r Reading) IsEmpty() bool {
+	return r.Time.IsZero()
+}
+
 func (r Reading) String() string {
 	if r.Fix {
 		return fmt.Sprintf("fix: active, time: %s, speed: %f m/s, position: %s", r.Time.String(), r.Speed, r.Position.String())
@@ -45,6 +49,9 @@ const currentCentury = 2000
 
 // See http://aprs.gids.nl/nmea/#rmc
 func FromGPRMC(sentence string) (Reading, error) {
+	if !strings.Contains(sentence, "$GPRMC") {
+		return Reading{}, nil
+	}
 	parts := strings.Split(sentence, ",")
 	if len(parts) != 13 {
 		return Reading{}, errors.New("sentence must have 13 parts")

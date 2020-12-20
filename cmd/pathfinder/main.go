@@ -2,11 +2,11 @@ package main
 
 import (
 	"bufio"
+	"context"
 	"io"
 	"log"
 	"os"
 	"os/signal"
-	"sync"
 	"syscall"
 	"time"
 
@@ -16,6 +16,7 @@ import (
 	"github.com/andycondon/pathfinder/pkg/path"
 	"github.com/andycondon/pathfinder/pkg/status"
 	"github.com/jacobsa/go-serial/serial"
+	"golang.org/x/sync/errgroup"
 	"periph.io/x/periph/conn/i2c"
 	"periph.io/x/periph/conn/i2c/i2creg"
 	"periph.io/x/periph/host"
@@ -30,7 +31,7 @@ func Close(closer io.Closer) {
 
 func main() {
 	if _, err := host.Init(); err != nil {
-		log.Fatalf("%v", err)
+		log.Fatalf("host.Init: %v", err)
 	}
 
 	// Open /dev/ttyS0 UART serial port
@@ -49,13 +50,15 @@ func main() {
 	// Open i2c bus #1
 	bus, err := i2creg.Open("1")
 	if err != nil {
-		log.Fatalf("%v", err)
+		log.Fatalf("i2c.Open: %v", err)
 	}
 	defer Close(bus)
 
 	var (
-		arduino = &i2c.Dev{Addr: 0x1A, Bus: bus}
-		irArray = &ir.SensorArray{
+		bCtx, cancel = context.WithCancel(context.Background())
+		g, ctx       = errgroup.WithContext(bCtx)
+		arduino      = &i2c.Dev{Addr: 0x1A, Bus: bus}
+		irArray      = &ir.SensorArray{
 			Left:    ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
 			Forward: ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
 			Right:   ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
@@ -67,96 +70,67 @@ func main() {
 		driverCh     = make(chan motor.Command, 100)
 		irCh         = make(chan ir.Reading, 100)
 		gpsCh        = make(chan gps.Reading, 100)
-		errCh        = make(chan error)
 		stopCh       = make(chan os.Signal, 1)
-		done         = make(chan struct{})
-		pathfinder   = path.Finder{Done: done, GPS: gpsCh, IR: irCh, Drive: driverCh}
-		wg           sync.WaitGroup
+		pathfinder   = path.Finder{Done: ctx.Done(), GPS: gpsCh, IR: irCh, Drive: driverCh}
 	)
 
 	// This is where the magic happens
-	wg.Add(1)
-	go func() {
-		defer func() {
-			log.Println("pathfinder loop done")
-			wg.Done()
-		}()
+	g.Go(func() error {
+		defer func() { log.Println("pathfinder loop done") }()
 		pathfinder.Find()
-	}()
-
-	wg.Add(1)
-	go func() {
-		defer func() {
-			log.Println("err loop done")
-			wg.Done()
-		}()
-		for {
-			select {
-			case err := <-errCh:
-				if err != nil {
-					log.Printf("%v\n", err)
-					// TODO Do we want to close the stop channel to end the program?
-				}
-			case <-done:
-				return
-			}
-		}
-	}()
+		return nil
+	})
 
 	// Start the routine for reading from the ttyS0 serial port
-	wg.Add(1)
-	go func() {
+	g.Go(func() error {
 		var (
 			reader  = bufio.NewReader(serialPort)
 			scanner = bufio.NewScanner(reader)
 		)
-		defer func() {
-			log.Println("ttyS0 loop done")
-			wg.Done()
-		}()
+		defer func() { log.Println("ttyS0 loop done") }()
 		for scanner.Scan() {
 			select {
-			case <-done:
-				return
+			case <-ctx.Done():
+				return nil
 			default:
 				sentence := scanner.Text()
-				if reading, err := gps.FromGPRMC(sentence); err != nil {
-					errCh <- err
-				} else {
+				reading, err := gps.FromGPRMC(sentence)
+				if err != nil {
+					return err
+				}
+				if !reading.IsEmpty() {
 					gpsCh <- reading
 				}
 			}
 		}
-	}()
+		return nil
+	})
 
 	// Start the routine for I2C communication
 	// Keeps all I2C communication single-threaded
-	wg.Add(1)
-	go func() {
+	g.Go(func() error {
 		var (
-			ticker      = time.NewTicker(100 * time.Millisecond)
-			reading     status.Reading
+			ticker      = time.NewTicker(200 * time.Millisecond)
 			lastReading status.Reading
-			err         error
 		)
 		defer func() {
 			log.Println("i2c loop done")
 			// Send a command to park so we don't drive off a cliff
 			_, err = driver.D(motor.Command{M: motor.Park})
 			ticker.Stop()
-			wg.Done()
 		}()
 		for {
 			select {
-			case <-done:
-				return
+			case <-ctx.Done():
+				return nil
 			case cmd := <-driverCh:
-				_, err = driver.D(cmd)
+				if _, err := driver.D(cmd); err != nil {
+					return err
+				}
 			case <-ticker.C:
-				reading, err = statusReader.Get()
+				reading, err := statusReader.Get()
 				if err != nil {
-					errCh <- err
-					break
+					return err
 				}
 
 				// TODO Add other I2C sensor checks here
@@ -168,12 +142,24 @@ func main() {
 				lastReading = reading
 			}
 		}
-	}()
+	})
 
-	signal.Notify(stopCh, syscall.SIGTERM, syscall.SIGINT)
-	<-stopCh
-	log.Println("shutting down...")
-	close(done)
-	wg.Wait()
-	log.Println("shut down complete")
+	g.Go(func() error {
+		signal.Notify(stopCh, syscall.SIGTERM, syscall.SIGINT)
+		select {
+		case <-ctx.Done():
+			break
+		case <-stopCh:
+			log.Println("received shutdown signal...")
+			cancel()
+		}
+		return nil
+	})
+
+	err = g.Wait()
+	if err != nil {
+		log.Fatalf("shut down with error: %v", err)
+	} else {
+		log.Println("shut down complete")
+	}
 }
