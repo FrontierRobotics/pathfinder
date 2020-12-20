@@ -12,7 +12,7 @@ type Finder struct {
 	IR    <-chan ir.Reading
 	GPS   <-chan gps.Reading
 	Drive chan<- motor.Command
-	Done  chan struct{}
+	Done  <-chan struct{}
 }
 
 func (f *Finder) Find() {

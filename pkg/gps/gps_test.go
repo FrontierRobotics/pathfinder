@@ -139,6 +139,20 @@ func TestFromGPRMC(t *testing.T) {
 	}
 }
 
+func TestReading_IsEmpty(t *testing.T) {
+	t.Run("empty", func(t *testing.T) {
+		r, err := gps.FromGPRMC(`not a GPRMC sentence`)
+		assert.NoError(t, err)
+		assert.True(t, r.IsEmpty())
+	})
+
+	t.Run("not empty", func(t *testing.T) {
+		r, err := gps.FromGPRMC(`$GPRMC,191736.000,A,4111.1494,N,10448.5048,W,2.01,34.47,271120,,,A*48`)
+		assert.NoError(t, err)
+		assert.False(t, r.IsEmpty())
+	})
+}
+
 func TestReading_String(t *testing.T) {
 	t.Run("no fix", func(t *testing.T) {
 		r := gps.Reading{Time: jan072080}
