@@ -17,11 +17,8 @@ type Finder struct {
 
 func (f *Finder) Find() {
 	var (
-		IR      ir.Reading
-		GPS     gps.Reading
-		forward = motor.Command{M: motor.Forward, S: motor.Slow}
-		left    = motor.Command{M: motor.RotateLeft, S: motor.Medium}
-		right   = motor.Command{M: motor.RotateRight, S: motor.Medium}
+		IR  ir.Reading
+		GPS gps.Reading
 	)
 	for {
 		select {
@@ -33,29 +30,30 @@ func (f *Finder) Find() {
 			log.Println("finder ir - " + IR.String())
 		}
 
-		if !IR.F.IsNear() && !IR.L.IsNear() && !IR.R.IsNear() {
-			f.Drive <- forward
-			continue
-		}
-		if !IR.F.IsNear() && IR.L.IsNear() && !IR.R.IsNear() {
-			f.Drive <- right
-			continue
-		}
-		if !IR.F.IsNear() && !IR.L.IsNear() && IR.R.IsNear() {
-			f.Drive <- left
-			continue
-		}
-		if IR.F.IsNear() && !IR.L.IsNear() {
-			f.Drive <- left
-			continue
-		}
-		if IR.F.IsNear() && !IR.R.IsNear() {
-			f.Drive <- right
-			continue
-		}
-		if IR.AllNear() {
-			f.Drive <- right
-			continue
-		}
+		f.Drive <- avoid(IR)
 	}
+}
+
+func avoid(IR ir.Reading) motor.Command {
+	var (
+		forward = motor.Command{M: motor.Forward, S: motor.Slow}
+		left    = motor.Command{M: motor.RotateLeft, S: motor.Medium}
+		right   = motor.Command{M: motor.RotateRight, S: motor.Medium}
+	)
+	if !IR.F.IsNear() && !IR.L.IsNear() && !IR.R.IsNear() {
+		return forward
+	}
+	if !IR.F.IsNear() && IR.L.IsNear() && !IR.R.IsNear() {
+		return right
+	}
+	if !IR.F.IsNear() && !IR.L.IsNear() && IR.R.IsNear() {
+		return left
+	}
+	if IR.F.IsNear() && !IR.L.IsNear() {
+		return left
+	}
+	if IR.F.IsNear() && !IR.R.IsNear() {
+		return right
+	}
+	return right
 }

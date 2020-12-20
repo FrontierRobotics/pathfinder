@@ -20,6 +20,26 @@ func TestFind(t *testing.T) {
 			irReading: ir.Reading{L: ir.ProximityClear, F: ir.ProximityClear, R: ir.ProximityClear},
 			driveCmd:  motor.Command{M: motor.Forward, S: motor.Slow},
 		},
+		{
+			name:      "rotate right if possible and obstacle to left",
+			irReading: ir.Reading{L: ir.ProximityNear, F: ir.ProximityFar, R: ir.ProximityFar},
+			driveCmd:  motor.Command{M: motor.RotateRight, S: motor.Medium},
+		},
+		{
+			name:      "rotate left if possible and obstacle to right",
+			irReading: ir.Reading{L: ir.ProximityFar, F: ir.ProximityFar, R: ir.ProximityNear},
+			driveCmd:  motor.Command{M: motor.RotateLeft, S: motor.Medium},
+		},
+		{
+			name:      "rotate left if front and right blocked",
+			irReading: ir.Reading{L: ir.ProximityFar, F: ir.ProximityNear, R: ir.ProximityNear},
+			driveCmd:  motor.Command{M: motor.RotateLeft, S: motor.Medium},
+		},
+		{
+			name:      "rotate right if everything blocked",
+			irReading: ir.Reading{L: ir.ProximityNear, F: ir.ProximityNear, R: ir.ProximityNear},
+			driveCmd:  motor.Command{M: motor.RotateRight, S: motor.Medium},
+		},
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
