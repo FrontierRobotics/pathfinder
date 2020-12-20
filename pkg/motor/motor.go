@@ -6,8 +6,8 @@ const (
 )
 
 type Motor struct {
-	Addr      byte
-	Slow, Med byte
+	Addr            byte
+	Slow, Med, Fast byte
 }
 
 func (m *Motor) speed(s Speed) byte {
@@ -18,6 +18,8 @@ func (m *Motor) speed(s Speed) byte {
 		return m.Slow
 	case Medium:
 		return m.Med
+	case Fast:
+		return m.Fast
 	default:
 		return 0x00
 	}

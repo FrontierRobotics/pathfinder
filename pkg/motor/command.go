@@ -16,6 +16,7 @@ const (
 	Stop Speed = iota
 	Slow
 	Medium
+	Fast
 	Full
 )
 

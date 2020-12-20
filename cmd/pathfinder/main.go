@@ -56,13 +56,13 @@ func main() {
 	var (
 		arduino = &i2c.Dev{Addr: 0x1A, Bus: bus}
 		irArray = &ir.SensorArray{
-			Left:    ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
-			Forward: ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
-			Right:   ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
+			Left:    ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
+			Forward: ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
+			Right:   ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
 		}
 		statusReader = &status.Reader{Addr: 0x10, Tx: arduino.Tx, IRArray: irArray}
-		m1           = &motor.Motor{Addr: 0x01, Slow: 0x50, Med: 0xA0}
-		m2           = &motor.Motor{Addr: 0x02, Slow: 0x50, Med: 0xA0}
+		m1           = &motor.Motor{Addr: 0x01, Slow: 0x50, Med: 0xA0, Fast: 0xC0}
+		m2           = &motor.Motor{Addr: 0x02, Slow: 0x50, Med: 0xA0, Fast: 0xC0}
 		driver       = &motor.Driver{Left: m1, Right: m2, Tx: arduino.Tx, ReadStatus: statusReader.ReadStatus}
 		driverCh     = make(chan motor.Command, 100)
 		irCh         = make(chan ir.Reading, 100)
@@ -162,7 +162,6 @@ func main() {
 				// TODO Add other I2C sensor checks here
 
 				// Check individual sensors for differences, sending readings on respective channels
-				// TODO Hmm, not so sure about just sending changes. More experimentation needed.
 				if reading.IR != lastReading.IR {
 					irCh <- reading.IR
 				}

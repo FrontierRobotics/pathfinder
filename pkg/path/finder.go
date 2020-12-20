@@ -17,11 +17,8 @@ type Finder struct {
 
 func (f *Finder) Find() {
 	var (
-		IR      ir.Reading
-		GPS     gps.Reading
-		forward = motor.Command{M: motor.Forward, S: motor.Slow}
-		stop    = motor.Command{M: motor.Park}
-		left    = motor.Command{M: motor.RotateLeft, S: motor.Medium}
+		IR  ir.Reading
+		GPS gps.Reading
 	)
 	for {
 		select {
@@ -33,21 +30,31 @@ func (f *Finder) Find() {
 			log.Println("finder ir - " + IR.String())
 		}
 
-		if IR.AllClear() {
-			f.Drive <- forward
-			continue
-		}
-		if !IR.F.IsNear() && (IR.L.IsFar() || IR.R.IsFar()) {
-			f.Drive <- forward
-			continue
-		}
-		if IR.F.IsNear() && !IR.L.IsNear() {
-			f.Drive <- left
-			continue
-		}
-		if IR.F.IsNear() {
-			f.Drive <- stop
-			continue
-		}
+		f.Drive <- avoid(IR)
 	}
+}
+
+func avoid(IR ir.Reading) motor.Command {
+	var (
+		fast    = motor.Command{M: motor.Forward, S: motor.Fast}
+		forward = motor.Command{M: motor.Forward, S: motor.Slow}
+		left    = motor.Command{M: motor.RotateLeft, S: motor.Medium}
+		right   = motor.Command{M: motor.RotateRight, S: motor.Medium}
+	)
+	if IR.AllClear() {
+		return fast
+	}
+	if !IR.F.IsNear() {
+		if !IR.R.IsNear() && !IR.L.IsNear() {
+			return forward
+		}
+		if !IR.R.IsNear() {
+			return right
+		}
+		return left
+	}
+	if !IR.L.IsNear() {
+		return left
+	}
+	return right
 }
