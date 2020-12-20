@@ -41,24 +41,20 @@ func avoid(IR ir.Reading) motor.Command {
 		left    = motor.Command{M: motor.RotateLeft, S: motor.Medium}
 		right   = motor.Command{M: motor.RotateRight, S: motor.Medium}
 	)
-
 	if IR.AllClear() {
 		return fast
 	}
-	if !IR.F.IsNear() && !IR.L.IsNear() && !IR.R.IsNear() {
-		return forward
-	}
-	if !IR.F.IsNear() && IR.L.IsNear() && !IR.R.IsNear() {
-		return right
-	}
-	if !IR.F.IsNear() && !IR.L.IsNear() && IR.R.IsNear() {
+	if !IR.F.IsNear() {
+		if !IR.R.IsNear() && !IR.L.IsNear() {
+			return forward
+		}
+		if !IR.R.IsNear() {
+			return right
+		}
 		return left
 	}
-	if IR.F.IsNear() && !IR.L.IsNear() {
+	if !IR.L.IsNear() {
 		return left
-	}
-	if IR.F.IsNear() && !IR.R.IsNear() {
-		return right
 	}
 	return right
 }
