@@ -55,6 +55,11 @@ func TestMotor_Reverse(t *testing.T) {
 			command: []byte{0x01, 0x00, 0xFF},
 		},
 		{
+			name:    "fast",
+			speed:   motor.Fast,
+			command: []byte{0x01, 0x00, 0xC0},
+		},
+		{
 			name:    "medium",
 			speed:   motor.Medium,
 			command: []byte{0x01, 0x00, 0xA0},
@@ -72,7 +77,7 @@ func TestMotor_Reverse(t *testing.T) {
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			m := &motor.Motor{Addr: 0x01, Slow: 0x50, Med: 0xA0}
+			m := &motor.Motor{Addr: 0x01, Slow: 0x50, Med: 0xA0, Fast: 0xC0}
 
 			assert.Equal(t, tc.command, m.Reverse(tc.speed))
 		})

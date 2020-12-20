@@ -61,8 +61,8 @@ func main() {
 			Right:   ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
 		}
 		statusReader = &status.Reader{Addr: 0x10, Tx: arduino.Tx, IRArray: irArray}
-		m1           = &motor.Motor{Addr: 0x01, Slow: 0x50, Med: 0xA0}
-		m2           = &motor.Motor{Addr: 0x02, Slow: 0x50, Med: 0xA0}
+		m1           = &motor.Motor{Addr: 0x01, Slow: 0x50, Med: 0xA0, Fast: 0xC0}
+		m2           = &motor.Motor{Addr: 0x02, Slow: 0x50, Med: 0xA0, Fast: 0xC0}
 		driver       = &motor.Driver{Left: m1, Right: m2, Tx: arduino.Tx, ReadStatus: statusReader.ReadStatus}
 		driverCh     = make(chan motor.Command, 100)
 		irCh         = make(chan ir.Reading, 100)

@@ -36,10 +36,15 @@ func (f *Finder) Find() {
 
 func avoid(IR ir.Reading) motor.Command {
 	var (
+		fast    = motor.Command{M: motor.Forward, S: motor.Fast}
 		forward = motor.Command{M: motor.Forward, S: motor.Slow}
 		left    = motor.Command{M: motor.RotateLeft, S: motor.Medium}
 		right   = motor.Command{M: motor.RotateRight, S: motor.Medium}
 	)
+
+	if IR.AllClear() {
+		return fast
+	}
 	if !IR.F.IsNear() && !IR.L.IsNear() && !IR.R.IsNear() {
 		return forward
 	}
