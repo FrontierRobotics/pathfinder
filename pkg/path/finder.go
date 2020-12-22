@@ -17,8 +17,9 @@ type Finder struct {
 
 func (f *Finder) Find() {
 	var (
-		IR  ir.Reading
-		GPS gps.Reading
+		IR      ir.Reading
+		GPS     gps.Reading
+		lastCmd motor.Command
 	)
 	for {
 		select {
@@ -30,7 +31,10 @@ func (f *Finder) Find() {
 			log.Println("finder ir - " + IR.String())
 		}
 
-		f.Drive <- avoid(IR)
+		if cmd := avoid(IR); cmd != lastCmd {
+			lastCmd = cmd
+			f.Drive <- cmd
+		}
 	}
 }
 
