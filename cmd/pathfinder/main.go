@@ -110,7 +110,7 @@ func main() {
 	// Keeps all I2C communication single-threaded
 	g.Go(func() error {
 		var (
-			ticker      = time.NewTicker(200 * time.Millisecond)
+			ticker      = time.NewTicker(10 * time.Millisecond)
 			lastReading status.Reading
 		)
 		defer func() {
