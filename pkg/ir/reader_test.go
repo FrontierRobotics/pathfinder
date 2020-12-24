@@ -1,11 +1,10 @@
-package status_test
+package ir_test
 
 import (
 	"errors"
 	"testing"
 
 	"github.com/andycondon/pathfinder/pkg/ir"
-	"github.com/andycondon/pathfinder/pkg/status"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -13,16 +12,14 @@ func TestGetter_GetStatus(t *testing.T) {
 	tests := []struct {
 		name    string
 		bytes   []byte
-		reading status.Reading
+		reading ir.Reading
 		hasErr  bool
 		txErr   error
 	}{
 		{
-			name:  "happy path",
-			bytes: []byte{0x20, 0x20, 0x20},
-			reading: status.Reading{
-				IR: ir.Reading{L: ir.ProximityFar, F: ir.ProximityFar, R: ir.ProximityFar},
-			},
+			name:    "happy path",
+			bytes:   []byte{0x20, 0x20, 0x20},
+			reading: ir.Reading{L: ir.ProximityFar, F: ir.ProximityFar, R: ir.ProximityFar},
 		},
 		{
 			name:   "tx error",
@@ -43,7 +40,7 @@ func TestGetter_GetStatus(t *testing.T) {
 				}
 				return tc.txErr
 			}
-			r := status.Reader{Addr: 0x10, Tx: tx, IRArray: irArray}
+			r := ir.Reader{Addr: 0x10, Tx: tx, IRArray: irArray}
 
 			reading, err := r.Get()
 
@@ -64,16 +61,14 @@ func TestReader_ReadStatus(t *testing.T) {
 		Forward: ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
 		Right:   ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0x50},
 	}
-	r := status.Reader{IRArray: irArray}
+	r := ir.Reader{IRArray: irArray}
 
 	t.Run("happy path", func(t *testing.T) {
 		reading, err := r.ReadStatus([]byte{0x20, 0x20, 0x20})
 
 		assert.NoError(t, err)
 
-		assert.Equal(t, status.Reading{
-			IR: ir.Reading{L: ir.ProximityFar, F: ir.ProximityFar, R: ir.ProximityFar},
-		}, reading)
+		assert.Equal(t, ir.Reading{L: ir.ProximityFar, F: ir.ProximityFar, R: ir.ProximityFar}, reading)
 	})
 
 	t.Run("read error", func(t *testing.T) {
