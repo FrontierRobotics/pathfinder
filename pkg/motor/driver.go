@@ -1,22 +1,15 @@
 package motor
 
-import (
-	"errors"
-
-	"github.com/andycondon/pathfinder/pkg/status"
-)
+import "errors"
 
 type Tx func(w []byte, r []byte) error
 
-type ReadStatus func([]byte) (status.Reading, error)
-
 type Driver struct {
 	Tx
-	ReadStatus
 	Left, Right *Motor
 }
 
-func (d *Driver) D(cmd Command) (status.Reading, error) {
+func (d *Driver) D(cmd Command) error {
 	s := cmd.S
 	switch cmd.M {
 	case Park:
@@ -30,22 +23,18 @@ func (d *Driver) D(cmd Command) (status.Reading, error) {
 	case RotateRight:
 		return d.txPair(d.Left.Forward(s), d.Right.Reverse(s))
 	default:
-		return status.Reading{}, errors.New("unknown motor movement")
+		return errors.New("unknown motor movement")
 	}
 }
 
-func (d *Driver) txPair(m1Cmd, m2Cmd []byte) (status.Reading, error) {
-	s, err := d.tx(m1Cmd)
+func (d *Driver) txPair(m1Cmd, m2Cmd []byte) error {
+	err := d.tx(m1Cmd)
 	if err != nil {
-		return s, err
+		return err
 	}
 	return d.tx(m2Cmd)
 }
 
-func (d *Driver) tx(cmd []byte) (status.Reading, error) {
-	read := make([]byte, 3)
-	if err := d.Tx(cmd, read); err != nil {
-		return status.Reading{}, err
-	}
-	return d.ReadStatus(read)
+func (d *Driver) tx(cmd []byte) error {
+	return d.Tx(cmd, nil)
 }

@@ -5,10 +5,12 @@
 #define I2C_ADDRESS 0x1A
 #define I2C_BUFFER_SIZE 32
 #define MAX_NUM_ELEMENTS 30
+#define IR_ADDRESS 0x10
 #define MOTOR1_ADDRESS 0x01
 #define MOTOR2_ADDRESS 0x02
 
 char i2c_buffer[I2C_BUFFER_SIZE];
+volatile byte internal_address;
 
 struct Event
 {
@@ -53,21 +55,27 @@ void loop()
 
 void requestEvent()
 {
-  byte sensor_left = analogRead(A0);
-  byte sensor_front = analogRead(A1);
-  byte sensor_right = analogRead(A2);
-  Wire.write(sensor_left);
-  Wire.write(sensor_front);
-  Wire.write(sensor_right);
+  switch (internal_address)
+  {
+  case IR_ADDRESS:
+    byte sensor_left = analogRead(A0);
+    byte sensor_front = analogRead(A1);
+    byte sensor_right = analogRead(A2);
+    Wire.write(sensor_left);
+    Wire.write(sensor_front);
+    Wire.write(sensor_right);
+    break;
+  }
 }
 
 void receiveEvent(int receive_size)
 {
   if (!Wire.available())
   {
+    internal_address = 0x00;
     return;
   }
-  byte internal_address = Wire.read();
+  internal_address = Wire.read();
 
   if (internal_address == MOTOR1_ADDRESS || internal_address == MOTOR2_ADDRESS)
   {

@@ -14,7 +14,6 @@ import (
 	"github.com/andycondon/pathfinder/pkg/ir"
 	"github.com/andycondon/pathfinder/pkg/motor"
 	"github.com/andycondon/pathfinder/pkg/path"
-	"github.com/andycondon/pathfinder/pkg/status"
 	"github.com/jacobsa/go-serial/serial"
 	"golang.org/x/sync/errgroup"
 	"periph.io/x/periph/conn/i2c"
@@ -58,20 +57,23 @@ func main() {
 		bCtx, cancel = context.WithCancel(context.Background())
 		g, ctx       = errgroup.WithContext(bCtx)
 		arduino      = &i2c.Dev{Addr: 0x1A, Bus: bus}
-		irArray      = &ir.SensorArray{
-			Left:    ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
-			Forward: ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
-			Right:   ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
-		}
-		statusReader = &status.Reader{Addr: 0x10, Tx: arduino.Tx, IRArray: irArray}
-		m1           = &motor.Motor{Addr: 0x01, Slow: 0x50, Med: 0xA0, Fast: 0xC0}
-		m2           = &motor.Motor{Addr: 0x02, Slow: 0x50, Med: 0xA0, Fast: 0xC0}
-		driver       = &motor.Driver{Left: m1, Right: m2, Tx: arduino.Tx, ReadStatus: statusReader.ReadStatus}
-		driverCh     = make(chan motor.Command, 100)
-		irCh         = make(chan ir.Reading, 100)
-		gpsCh        = make(chan gps.Reading, 100)
-		stopCh       = make(chan os.Signal, 1)
-		pathfinder   = path.Finder{Done: ctx.Done(), GPS: gpsCh, IR: irCh, Drive: driverCh}
+		irReader     = &ir.Reader{
+			IRArray: &ir.SensorArray{
+				Left:    ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
+				Forward: ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
+				Right:   ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
+			},
+			Addr: 0x10,
+			Tx:   arduino.Tx}
+		driver = &motor.Driver{
+			Left:  &motor.Motor{Addr: 0x01, Slow: 0x50, Med: 0xA0, Fast: 0xC0},
+			Right: &motor.Motor{Addr: 0x02, Slow: 0x50, Med: 0xA0, Fast: 0xC0},
+			Tx:    arduino.Tx}
+		driverCh   = make(chan motor.Command, 100)
+		irCh       = make(chan ir.Reading, 100)
+		gpsCh      = make(chan gps.Reading, 100)
+		stopCh     = make(chan os.Signal, 1)
+		pathfinder = path.Finder{Done: ctx.Done(), GPS: gpsCh, IR: irCh, Drive: driverCh}
 	)
 
 	// This is where the magic happens
@@ -110,36 +112,32 @@ func main() {
 	// Keeps all I2C communication single-threaded
 	g.Go(func() error {
 		var (
-			ticker      = time.NewTicker(10 * time.Millisecond)
-			lastReading status.Reading
+			irTick        = time.NewTicker(100 * time.Millisecond)
+			lastIRReading ir.Reading
 		)
 		defer func() {
-			log.Println("i2c loop done")
+			irTick.Stop()
 			// Send a command to park so we don't drive off a cliff
-			_, err = driver.D(motor.Command{M: motor.Park})
-			ticker.Stop()
+			_ = driver.D(motor.Command{M: motor.Park})
+			log.Println("i2c bus 1 loop done")
 		}()
 		for {
 			select {
 			case <-ctx.Done():
 				return nil
 			case cmd := <-driverCh:
-				if _, err := driver.D(cmd); err != nil {
+				if err := driver.D(cmd); err != nil {
 					return err
 				}
-			case <-ticker.C:
-				reading, err := statusReader.Get()
+			case <-irTick.C:
+				irReading, err := irReader.Get()
 				if err != nil {
 					return err
 				}
-
-				// TODO Add other I2C sensor checks here
-
-				// Check individual sensors for differences, sending readings on respective channels
-				if reading.IR != lastReading.IR {
-					irCh <- reading.IR
+				if irReading != lastIRReading {
+					irCh <- irReading
 				}
-				lastReading = reading
+				lastIRReading = irReading
 			}
 		}
 	})

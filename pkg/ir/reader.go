@@ -1,17 +1,11 @@
-package status
-
-import "github.com/andycondon/pathfinder/pkg/ir"
-
-type Reading struct {
-	IR ir.Reading
-}
+package ir
 
 type Tx func(w []byte, r []byte) error
 
 type Reader struct {
 	Tx
 	Addr    byte
-	IRArray *ir.SensorArray
+	IRArray *SensorArray
 }
 
 func (r *Reader) Get() (Reading, error) {
@@ -28,7 +22,5 @@ func (r *Reader) ReadStatus(read []byte) (Reading, error) {
 		// Not possible to hit this error if read slice is correct size above.
 		return Reading{}, err
 	}
-	return Reading{
-		IR: irSensor,
-	}, nil
+	return irSensor, nil
 }
