@@ -14,6 +14,8 @@ import (
 	"github.com/andycondon/pathfinder/pkg/ir"
 	"github.com/andycondon/pathfinder/pkg/motor"
 	"github.com/andycondon/pathfinder/pkg/path"
+	"github.com/golang/geo/s1"
+	"github.com/golang/geo/s2"
 	"github.com/jacobsa/go-serial/serial"
 	"golang.org/x/sync/errgroup"
 	"periph.io/x/periph/conn/i2c"
@@ -33,30 +35,19 @@ func main() {
 		log.Fatalf("host.Init: %v", err)
 	}
 
-	// Open /dev/ttyS0 UART serial port
-	serialPort, err := serial.Open(serial.OpenOptions{
-		PortName:        "/dev/ttyS0",
-		BaudRate:        9600,
-		DataBits:        8,
-		StopBits:        1,
-		MinimumReadSize: 4,
-	})
-	if err != nil {
-		log.Fatalf("serial.Open: %v", err)
-	}
+	serialPort := openUART("/dev/ttyS0")
 	defer Close(serialPort)
 
-	// Open i2c bus #1
-	bus, err := i2creg.Open("1")
-	if err != nil {
-		log.Fatalf("i2c.Open: %v", err)
-	}
-	defer Close(bus)
+	bus1 := openI2C("1")
+	defer Close(bus1)
+
+	bus3 := openI2C("3")
+	defer Close(bus3)
 
 	var (
 		bCtx, cancel = context.WithCancel(context.Background())
 		g, ctx       = errgroup.WithContext(bCtx)
-		arduino      = &i2c.Dev{Addr: 0x1A, Bus: bus}
+		arduino      = &i2c.Dev{Addr: 0x1A, Bus: bus1}
 		irReader     = &ir.Reader{
 			IRArray: &ir.SensorArray{
 				Left:    ir.Sensor{ClearUpperBound: 0x10, FarUpperBound: 0xA0},
@@ -69,11 +60,22 @@ func main() {
 			Left:  &motor.Motor{Addr: 0x01, Slow: 0x50, Med: 0xA0, Fast: 0xC0},
 			Right: &motor.Motor{Addr: 0x02, Slow: 0x50, Med: 0xA0, Fast: 0xC0},
 			Tx:    arduino.Tx}
-		driverCh   = make(chan motor.Command, 100)
-		irCh       = make(chan ir.Reading, 100)
-		gpsCh      = make(chan gps.Reading, 100)
-		stopCh     = make(chan os.Signal, 1)
-		pathfinder = path.Finder{Done: ctx.Done(), GPS: gpsCh, IR: irCh, Drive: driverCh}
+		bno055                     = openBno055(&i2c.Dev{Addr: 0x28, Bus: bus3})
+		driverCh                   = make(chan motor.Command, 100)
+		irCh                       = make(chan ir.Reading, 10)
+		gpsFixCh                   = make(chan bool, 10)
+		latLngCh                   = make(chan s2.LatLng, 10)
+		headingCh, rollCh, pitchCh = make(chan s1.Angle, 10), make(chan s1.Angle, 10), make(chan s1.Angle, 10)
+		pathfinder                 = path.Finder{
+			Done:    ctx.Done(),
+			GPSfix:  gpsFixCh,
+			LatLng:  latLngCh,
+			Heading: headingCh,
+			Roll:    rollCh,
+			Pitch:   pitchCh,
+			IR:      irCh,
+			Drive:   driverCh,
+		}
 	)
 
 	// This is where the magic happens
@@ -86,8 +88,10 @@ func main() {
 	// Start the routine for reading from the ttyS0 serial port
 	g.Go(func() error {
 		var (
-			reader  = bufio.NewReader(serialPort)
-			scanner = bufio.NewScanner(reader)
+			reader       = bufio.NewReader(serialPort)
+			scanner      = bufio.NewScanner(reader)
+			lastPosition s2.LatLng
+			lastFix      bool
 		)
 		defer func() { log.Println("ttyS0 loop done") }()
 		for scanner.Scan() {
@@ -96,20 +100,26 @@ func main() {
 				return nil
 			default:
 				sentence := scanner.Text()
-				reading, err := gps.FromGPRMC(sentence)
+				r, err := gps.FromGPRMC(sentence)
 				if err != nil {
 					return err
 				}
-				if !reading.IsEmpty() {
-					gpsCh <- reading
+				if !r.IsEmpty() {
+					if lastFix != r.Fix {
+						lastFix = r.Fix
+						gpsFixCh <- r.Fix
+					}
+					if lastPosition != r.Position {
+						lastPosition = r.Position
+						latLngCh <- r.Position
+					}
 				}
 			}
 		}
 		return nil
 	})
 
-	// Start the routine for I2C communication
-	// Keeps all I2C communication single-threaded
+	// Start the routine for I2C Bus 1 communication
 	g.Go(func() error {
 		var (
 			irTick        = time.NewTicker(100 * time.Millisecond)
@@ -142,7 +152,52 @@ func main() {
 		}
 	})
 
+	// Start the routine for I2C Bus 3 communication
 	g.Go(func() error {
+		var (
+			eulerTick                        = time.NewTicker(100 * time.Millisecond)
+			bno055TempTick                   = time.NewTicker(10 * time.Second)
+			lastHeading, lastRoll, lastPitch s1.Angle
+		)
+		defer func() {
+			eulerTick.Stop()
+			bno055TempTick.Stop()
+			log.Println("i2c bus 3 loop done")
+		}()
+		for {
+			select {
+			case <-ctx.Done():
+				return nil
+			case <-eulerTick.C:
+				v, err := bno055.Euler()
+				if err != nil {
+					return err
+				}
+				heading, roll, pitch := orientation(v)
+				if !heading.ApproxEqual(lastHeading) {
+					lastHeading = heading
+					headingCh <- heading
+				}
+				if !roll.ApproxEqual(lastRoll) {
+					lastRoll = roll
+					rollCh <- roll
+				}
+				if !pitch.ApproxEqual(lastPitch) {
+					lastPitch = pitch
+					pitchCh <- pitch
+				}
+			case <-bno055TempTick.C:
+				intTemp, err := bno055.Temperature()
+				if err != nil {
+					return err
+				}
+				log.Printf("BNO-055 Temperature: %v °C\n", intTemp)
+			}
+		}
+	})
+
+	g.Go(func() error {
+		stopCh := make(chan os.Signal, 1)
 		signal.Notify(stopCh, syscall.SIGTERM, syscall.SIGINT)
 		select {
 		case <-ctx.Done():
@@ -154,10 +209,32 @@ func main() {
 		return nil
 	})
 
-	err = g.Wait()
+	err := g.Wait()
 	if err != nil {
 		log.Fatalf("shut down with error: %v", err)
 	} else {
 		log.Println("shut down complete")
 	}
+}
+
+func openUART(name string) io.ReadWriteCloser {
+	serialPort, err := serial.Open(serial.OpenOptions{
+		PortName:        name,
+		BaudRate:        9600,
+		DataBits:        8,
+		StopBits:        1,
+		MinimumReadSize: 4,
+	})
+	if err != nil {
+		log.Fatalf("serial.Open, port: %s err: %v", name, err)
+	}
+	return serialPort
+}
+
+func openI2C(name string) i2c.BusCloser {
+	bus, err := i2creg.Open(name)
+	if err != nil {
+		log.Fatalf("i2c.Open, bus: %s, err: %v", name, err)
+	}
+	return bus
 }

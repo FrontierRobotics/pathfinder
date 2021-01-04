@@ -1,3 +1,5 @@
+github.com/andycondon/bno055 v1.1.0 h1:/xOljc5/rJ5IwG86kgaGvtWwXLY0tK9YALhUo1mKVK8=
+github.com/andycondon/bno055 v1.1.0/go.mod h1:Vv1/jUxlL1SZ0fSaA4dPTWXa5sBFl9BwgJxTcdSSNuI=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/golang/geo v0.0.0-20200730024412-e86565bf3f35 h1:enTowfyfjtomBQhxX9mhUD+0tZhpe4rIzStO4aNlou8=
