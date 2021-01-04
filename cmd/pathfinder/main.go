@@ -3,6 +3,8 @@ package main
 import (
 	"bufio"
 	"context"
+	"image"
+	"image/color"
 	"io"
 	"log"
 	"os"
@@ -17,14 +19,17 @@ import (
 	"github.com/golang/geo/s1"
 	"github.com/golang/geo/s2"
 	"github.com/jacobsa/go-serial/serial"
+	"github.com/pbnjay/pixfont"
 	"golang.org/x/sync/errgroup"
 	"periph.io/x/periph/conn/i2c"
 	"periph.io/x/periph/conn/i2c/i2creg"
+	"periph.io/x/periph/devices/ssd1306"
+	"periph.io/x/periph/devices/ssd1306/image1bit"
 	"periph.io/x/periph/host"
 )
 
-func Close(closer io.Closer) {
-	err := closer.Close()
+func C(closer func()error) {
+	err := closer()
 	if err != nil {
 		log.Println(err)
 	}
@@ -36,13 +41,33 @@ func main() {
 	}
 
 	serialPort := openUART("/dev/ttyS0")
-	defer Close(serialPort)
+	defer C(serialPort.Close)
 
 	bus1 := openI2C("1")
-	defer Close(bus1)
+	defer C(bus1.Close)
 
 	bus3 := openI2C("3")
-	defer Close(bus3)
+	defer C(bus3.Close)
+
+	dev, err := ssd1306.NewI2C(bus1, &ssd1306.Opts{H: 32, W: 128, Sequential: true})
+	if err != nil {
+		log.Fatalf("failed to initialize ssd1306: %v", err)
+	}
+	defer C(dev.Halt)
+
+	// see: https://learn.adafruit.com/adafruit-pioled-128x32-mini-oled-for-raspberry-pi/usage
+	// see: https://pkg.go.dev/periph.io/x/periph@v3.6.7+incompatible/devices/ssd1306
+	// see: https://pkg.go.dev/github.com/pbnjay/pixfont
+	// see: https://github.com/pbnjay/pixfont
+	// see: https://stackoverflow.com/questions/38299930/how-to-add-a-simple-text-label-to-an-image-in-go
+	img := image1bit.NewVerticalLSB(dev.Bounds())
+	pixfont.DrawString(img, 0, 0, "L:|||", color.White)
+	pixfont.DrawString(img, 0, 8, "F: |", color.White)
+	pixfont.DrawString(img, 0, 16, "R: ||", color.White)
+	pixfont.DrawString(img, 0, 24, "Test 4 y", color.White)
+	if err := dev.Draw(dev.Bounds(), img, image.Point{}); err != nil {
+		log.Fatal(err)
+	}
 
 	var (
 		bCtx, cancel = context.WithCancel(context.Background())
@@ -209,7 +234,7 @@ func main() {
 		return nil
 	})
 
-	err := g.Wait()
+	err = g.Wait()
 	if err != nil {
 		log.Fatalf("shut down with error: %v", err)
 	} else {

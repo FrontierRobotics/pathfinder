@@ -13,11 +13,19 @@ github.com/golang/geo/s2
 # github.com/jacobsa/go-serial v0.0.0-20180131005756-15cf729a72d4
 ## explicit
 github.com/jacobsa/go-serial/serial
+# github.com/pbnjay/pixfont v0.0.0-20200714042608-33b744692567
+## explicit
+github.com/pbnjay/pixfont
 # github.com/pmezard/go-difflib v1.0.0
 github.com/pmezard/go-difflib/difflib
 # github.com/stretchr/testify v1.6.1
 ## explicit
 github.com/stretchr/testify/assert
+# golang.org/x/image v0.0.0-20201208152932-35266b937fa6
+## explicit
+golang.org/x/image/font
+golang.org/x/image/font/basicfont
+golang.org/x/image/math/fixed
 # golang.org/x/sync v0.0.0-20201207232520-09787c993a3a
 ## explicit
 golang.org/x/sync/errgroup
@@ -31,6 +39,7 @@ gopkg.in/yaml.v3
 ## explicit
 periph.io/x/periph
 periph.io/x/periph/conn
+periph.io/x/periph/conn/display
 periph.io/x/periph/conn/gpio
 periph.io/x/periph/conn/gpio/gpioreg
 periph.io/x/periph/conn/gpio/gpiostream
@@ -41,6 +50,8 @@ periph.io/x/periph/conn/pin
 periph.io/x/periph/conn/pin/pinreg
 periph.io/x/periph/conn/spi
 periph.io/x/periph/conn/spi/spireg
+periph.io/x/periph/devices/ssd1306
+periph.io/x/periph/devices/ssd1306/image1bit
 periph.io/x/periph/host
 periph.io/x/periph/host/allwinner
 periph.io/x/periph/host/am335x
