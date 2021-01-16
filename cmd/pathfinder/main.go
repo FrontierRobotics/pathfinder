@@ -64,17 +64,22 @@ func main() {
 		driverCh                   = make(chan motor.Command, 100)
 		irCh                       = make(chan ir.Reading, 10)
 		gpsFixCh                   = make(chan bool, 10)
-		latLngCh                   = make(chan s2.LatLng, 10)
+		positionCh                 = make(chan s2.LatLng, 10)
 		headingCh, rollCh, pitchCh = make(chan s1.Angle, 10), make(chan s1.Angle, 10), make(chan s1.Angle, 10)
 		pathfinder                 = path.Finder{
-			Done:    ctx.Done(),
-			GPSfix:  gpsFixCh,
-			LatLng:  latLngCh,
-			Heading: headingCh,
-			Roll:    rollCh,
-			Pitch:   pitchCh,
-			IR:      irCh,
-			Drive:   driverCh,
+			Done:             ctx.Done(),
+			GPSfix:           gpsFixCh,
+			Position:         positionCh,
+			Heading:          headingCh,
+			Roll:             rollCh,
+			Pitch:            pitchCh,
+			IR:               irCh,
+			Drive:            driverCh,
+			BearingTolerance: 1 * s1.Degree,
+			Waypoints: []s2.LatLng{
+				s2.LatLngFromDegrees(41.185493329876394, -104.80846343169397),
+				s2.LatLngFromDegrees(41.18551556476105, -104.80804562107231),
+			},
 		}
 	)
 
@@ -111,7 +116,7 @@ func main() {
 					}
 					if lastPosition != r.Position {
 						lastPosition = r.Position
-						latLngCh <- r.Position
+						positionCh <- r.Position
 					}
 				}
 			}

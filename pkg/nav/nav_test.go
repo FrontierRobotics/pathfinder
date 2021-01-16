@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/andycondon/pathfinder/pkg/nav"
+	"github.com/golang/geo/s1"
 	"github.com/golang/geo/s2"
 	"github.com/stretchr/testify/assert"
 )
@@ -11,22 +12,26 @@ import (
 func TestDistance(t *testing.T) {
 	var tests = []struct {
 		name    string
+		str     string
 		in, out nav.Distance
 	}{
 		{
 			name: "meters to kilometers",
 			in:   36 * nav.Meters,
 			out:  0.036 * nav.Kilometers,
+			str:  "36.00 m",
 		},
 		{
 			name: "kilometers to meters",
 			in:   36 * nav.Kilometers,
 			out:  36000 * nav.Meters,
+			str:  "36.00 km",
 		},
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			assert.InDelta(t, tc.out.Meters(), tc.in.Meters(), 0.0001)
+			assert.Equal(t, tc.str, tc.out.String())
 		})
 	}
 }
@@ -60,6 +65,34 @@ func TestSpeed(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			assert.InDelta(t, tc.out.MetersPerSecond(), tc.in.MetersPerSecond(), 0.0001)
+		})
+	}
+}
+
+func TestRelativeBearing(t *testing.T) {
+	tests := []struct {
+		name    string
+		h, b, r float64
+	}{
+		{name: "both in first quadrant, smaller heading", h: 10, b: 15, r: -5},
+		{name: "both in first quadrant, larger heading", h: 20, b: 15, r: 5},
+		{name: "both in fourth quadrant, smaller heading", h: 310, b: 315, r: -5},
+		{name: "both in fourth quadrant, larger heading", h: 320, b: 315, r: 5},
+		{name: "bearing in fourth quadrant, heading in first quadrant", h: 10, b: 350, r: 20},
+		{name: "heading in fourth quadrant, bearing in first quadrant", h: 350, b: 10, r: -20},
+		{name: "bearing in second quadrant, heading in third quadrant", h: 200, b: 150, r: 50},
+		{name: "heading in second quadrant, bearing in third quadrant", h: 150, b: 200, r: -50},
+		{name: "close enough", h: 10.01, b: 10, r: 0},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			h := s1.Angle(tc.h) * s1.Degree
+			b := s1.Angle(tc.b) * s1.Degree
+
+			expected := s1.Angle(tc.r) * s1.Degree
+			actual := nav.RelativeBearing(h, b, 0.1*s1.Degree)
+
+			assert.InDelta(t, expected.Degrees(), actual.Degrees(), 0.0001)
 		})
 	}
 }
@@ -120,6 +153,33 @@ func TestDistanceBetweenPositions(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			d := nav.DistanceBetweenPositions(tc.p1, tc.p2)
 			assert.InDelta(t, d.Meters(), tc.dist.Meters(), tc.delta.Meters())
+		})
+	}
+}
+
+func TestInitialBearing(t *testing.T) {
+	var tests = []struct {
+		name   string
+		p1, p2 s2.LatLng
+		b      s1.Angle
+	}{
+		{
+			name: "across the house",
+			p1:   s2.LatLngFromDegrees(41.18567319147294, -104.80829286889617),
+			p2:   s2.LatLngFromDegrees(41.18567113019101, -104.80852907096639),
+			b:    s1.Angle(4.7008),
+		},
+		{
+			name: "down the driveway",
+			p1:   s2.LatLngFromDegrees(41.185579119692925, -104.80847684264579),
+			p2:   s2.LatLngFromDegrees(41.185493329876394, -104.80846343169397),
+			b:    s1.Angle(3.0245),
+		},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			b := nav.InitialBearing(tc.p1, tc.p2)
+			assert.InDelta(t, b.Radians(), tc.b.Radians(), .01)
 		})
 	}
 }
